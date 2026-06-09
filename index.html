@@ -2,53 +2,54 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ยินดีต้อนรับสู่โปรไฟล์ของฉัน</title>
+    <title>หน้าแนะนำตัวของฉัน</title>
     <style>
         body {
-            background-color: #e3f2fd;
-            color: #444;
-            text-align: center;
-            padding: 50px 20px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            font-family: sans-serif;
+            color: #333;
         }
         .card {
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             max-width: 500px;
-            margin: 0 auto;
+            width: 90%;
             padding: 40px;
-            border-top: 5px solid #1565c0;
+            text-align: center;
         }
         h1 { color: #1565c0; margin-bottom: 20px; }
-        p { font-size: 18px; line-height: 1.8; margin: 10px 0; }
-        .intro-text { color: #555; }
-        .button {
+        p { font-size: 18px; line-height: 1.6; }
+        
+        .btn {
             display: inline-block;
-            background: #3498db;
+            background: #1565c0;
             color: white;
             padding: 12px 25px;
             text-decoration: none;
-            border-radius: 50px;
-            margin-top: 25px;
-            transition: background 0.3s ease;
+            border-radius: 25px;
+            margin-top: 20px;
+            transition: background 0.3s;
         }
-        .button:hover { background: #2980b9; }
+        .btn:hover {
+            background: #0d47a1;
+        }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <h1>ยินดีต้อนรับนะคะ 👋</h1>
-        <p>สวัสดีค่ะ! ฉันชื่อ <strong>ปฐภรณ์ (Pataporn)</strong> นะคะ</p>
-        <p class="intro-text">
-            ตอนนี้กำลังศึกษาและให้ความสนใจในด้านการวาดรูปค่ะ 
-            ฉันหลงใหลในการถ่ายทอดเรื่องราวผ่านลายเส้น 
-            และนี่เป็นพื้นที่เล็กๆ ที่ฉันใช้เก็บรวบรวมผลงานแรกบน GitHub Pages ค่ะ
-        </p>
+        <h1>ยินดีต้อนรับสู่โปรไฟล์ของฉัน</h1>
+        <p>สวัสดีค่ะ ดิฉันชื่อ <strong>ปฐภรณ์ (Pataporn)</strong></p>
+        <p>ขณะนี้กำลังศึกษาและสนใจด้าน Computer Science & Engineering ค่ะ</p>
+        <p>นี่คือเว็บไซต์แรกของดิฉันที่โฮสต์บน GitHub Pages</p>
         
-        <a href="portfolio.html" class="button">👉 ดูแฟ้มสะสมงานของฉัน</a>
+        <a href="portfolio.html" class="btn">ดูแฟ้มสะสมงานของดิฉัน</a>
     </div>
 
 </body>
