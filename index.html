@@ -54,17 +54,9 @@ body{
 .sparkles span:nth-child(6){left:90%;animation-duration:11s}
 
 @keyframes floatStar{
-    0%{
-        transform:translateY(0) rotate(0deg);
-        opacity:0;
-    }
-    20%{
-        opacity:1;
-    }
-    100%{
-        transform:translateY(-120vh) rotate(360deg);
-        opacity:0;
-    }
+    0%{transform:translateY(0) rotate(0deg);opacity:0}
+    20%{opacity:1}
+    100%{transform:translateY(-120vh) rotate(360deg);opacity:0}
 }
 
 .card{
@@ -81,12 +73,8 @@ body{
 }
 
 @keyframes cardFloat{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-10px);
-    }
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-10px)}
 }
 
 .card::before{
@@ -96,12 +84,7 @@ body{
     left:-120%;
     width:60%;
     height:300%;
-    background:linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,.8),
-        transparent
-    );
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,.8),transparent);
     transform:rotate(25deg);
     animation:shine 6s linear infinite;
 }
@@ -111,26 +94,24 @@ body{
     to{left:220%}
 }
 
+/* 🔥 แก้ตรงนี้: ใส่รูปในกรอบ */
 .card-header{
-    height:100px;
+    height:120px;
     margin-bottom:25px;
     border-radius:15px;
-    background:linear-gradient(
-        45deg,
-        #e3f2fd,
-        #fce4ec,
-        #e1f5fe
-    );
+    overflow:hidden;
     animation:glowBox 3s ease-in-out infinite alternate;
 }
 
+.card-header img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
 @keyframes glowBox{
-    from{
-        box-shadow:0 0 10px rgba(100,181,246,.2);
-    }
-    to{
-        box-shadow:0 0 25px rgba(100,181,246,.5);
-    }
+    from{box-shadow:0 0 10px rgba(100,181,246,.2)}
+    to{box-shadow:0 0 25px rgba(100,181,246,.5)}
 }
 
 h1{
@@ -141,14 +122,8 @@ h1{
 }
 
 @keyframes glowText{
-    from{
-        text-shadow:0 0 5px #90caf9;
-    }
-    to{
-        text-shadow:
-            0 0 10px #42a5f5,
-            0 0 20px #64b5f6;
-    }
+    from{text-shadow:0 0 5px #90caf9}
+    to{text-shadow:0 0 10px #42a5f5,0 0 20px #64b5f6}
 }
 
 p{
@@ -171,21 +146,14 @@ p{
 }
 
 @keyframes pulse{
-    0%,100%{
-        transform:scale(1);
-    }
-    50%{
-        transform:scale(1.05);
-    }
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.05)}
 }
 
 .btn:hover{
     background:#0d47a1;
     transform:scale(1.08);
-    box-shadow:
-        0 0 10px #42a5f5,
-        0 0 20px #42a5f5,
-        0 0 30px #42a5f5;
+    box-shadow:0 0 10px #42a5f5,0 0 20px #42a5f5,0 0 30px #42a5f5;
 }
 </style>
 </head>
@@ -202,7 +170,11 @@ p{
 </div>
 
 <div class="card">
-    <div class="card-header"></div>
+
+    <!-- 🔥 ใส่รูปตรงนี้ -->
+    <div class="card-header">
+        <img src="https://i.postimg.cc/9QbP25sP/albrecht-durer-view-of-trente-1494.jpg" alt="profile">
+    </div>
 
     <h1>ยินดีต้อนรับสู่โปรไฟล์ของปฐภรณ์</h1>
 
