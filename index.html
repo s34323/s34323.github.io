@@ -1,277 +1,176 @@
-```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>หน้าแนะนำตัวของปฐภรณ์</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>หน้าแนะนำตัวของปฐภรณ์</title>
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
 
-        body {
-            background: linear-gradient(
-                -45deg,
-                #e3f2fd,
-                #bbdefb,
-                #fce4ec,
-                #e1f5fe
-            );
-            background-size: 400% 400%;
-            animation: bgMove 12s ease infinite;
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:10px;
+    overflow:hidden;
+    font-family:sans-serif;
+    color:#333;
+    background:linear-gradient(-45deg,#e3f2fd,#bbdefb,#fce4ec,#e1f5fe);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
+}
 
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: sans-serif;
-            color: #333;
-            overflow: hidden;
-            position: relative;
-            padding: 10px;
-        }
+@keyframes bgMove{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
 
-        @keyframes bgMove {
-            0% {background-position:0% 50%;}
-            50% {background-position:100% 50%;}
-            100% {background-position:0% 50%;}
-        }
+.sparkles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+}
 
-        /* ดาววิบวับลอยขึ้น */
-        .sparkles {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
+.sparkles span{
+    position:absolute;
+    bottom:-30px;
+    color:rgba(255,255,255,.9);
+    animation:floatStar linear infinite;
+}
 
-        .sparkles span {
-            position: absolute;
-            bottom: -30px;
-            color: rgba(255,255,255,0.9);
-            font-size: 20px;
-            animation: floatStar linear infinite;
-        }
+.sparkles span:nth-child(1){left:10%;animation-duration:10s}
+.sparkles span:nth-child(2){left:25%;animation-duration:12s}
+.sparkles span:nth-child(3){left:40%;animation-duration:8s}
+.sparkles span:nth-child(4){left:60%;animation-duration:14s}
+.sparkles span:nth-child(5){left:75%;animation-duration:9s}
+.sparkles span:nth-child(6){left:90%;animation-duration:11s}
 
-        .sparkles span:nth-child(1){
-            left:10%;
-            animation-duration:10s;
-        }
+@keyframes floatStar{
+    0%{transform:translateY(0) rotate(0);opacity:0}
+    20%{opacity:1}
+    100%{transform:translateY(-120vh) rotate(360deg);opacity:0}
+}
 
-        .sparkles span:nth-child(2){
-            left:25%;
-            animation-duration:12s;
-            font-size:25px;
-        }
+.card{
+    width:100%;
+    max-width:400px;
+    padding:20px;
+    text-align:center;
+    border-radius:20px;
+    background:rgba(255,255,255,.95);
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+    position:relative;
+    overflow:hidden;
+    animation:cardFloat 4s ease-in-out infinite;
+}
 
-        .sparkles span:nth-child(3){
-            left:40%;
-            animation-duration:8s;
-        }
+@keyframes cardFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-10px)}
+}
 
-        .sparkles span:nth-child(4){
-            left:60%;
-            animation-duration:14s;
-            font-size:24px;
-        }
+.card::before{
+    content:"";
+    position:absolute;
+    top:-100%;
+    left:-120%;
+    width:60%;
+    height:300%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,.8),transparent);
+    transform:rotate(25deg);
+    animation:shine 6s linear infinite;
+}
 
-        .sparkles span:nth-child(5){
-            left:75%;
-            animation-duration:9s;
-        }
+@keyframes shine{
+    from{left:-120%}
+    to{left:220%}
+}
 
-        .sparkles span:nth-child(6){
-            left:90%;
-            animation-duration:11s;
-            font-size:22px;
-        }
+.card-header{
+    height:100px;
+    margin-bottom:25px;
+    border-radius:15px;
+    background:linear-gradient(45deg,#e3f2fd,#fce4ec,#e1f5fe);
+    animation:glowBox 3s ease-in-out infinite alternate;
+}
 
-        @keyframes floatStar {
-            0%{
-                transform: translateY(0) rotate(0deg);
-                opacity:0;
-            }
+@keyframes glowBox{
+    from{box-shadow:0 0 10px rgba(100,181,246,.2)}
+    to{box-shadow:0 0 25px rgba(100,181,246,.5)}
+}
 
-            20%{
-                opacity:1;
-            }
+h1{
+    color:#1565c0;
+    font-size:24px;
+    margin-bottom:15px;
+    animation:glowText 2s ease-in-out infinite alternate;
+}
 
-            100%{
-                transform: translateY(-120vh) rotate(360deg);
-                opacity:0;
-            }
-        }
+@keyframes glowText{
+    from{text-shadow:0 0 5px #90caf9}
+    to{text-shadow:0 0 10px #42a5f5,0 0 20px #64b5f6}
+}
 
-        .card {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(8px);
+p{
+    font-size:16px;
+    line-height:1.5;
+    margin:10px 0;
+}
 
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+.btn{
+    display:block;
+    margin-top:25px;
+    padding:15px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+    color:#fff;
+    background:#1565c0;
+    transition:.3s;
+    animation:pulse 2s infinite;
+}
 
-            width: 100%;
-            max-width: 400px;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+@keyframes pulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.05)}
+}
 
-            animation: cardFloat 4s ease-in-out infinite;
-            z-index: 2;
-        }
-
-        @keyframes cardFloat {
-            0%,100%{
-                transform: translateY(0);
-            }
-            50%{
-                transform: translateY(-10px);
-            }
-        }
-
-        /* แสงวิ่งผ่านการ์ด */
-        .card::before{
-            content:"";
-            position:absolute;
-            top:-100%;
-            left:-120%;
-            width:60%;
-            height:300%;
-
-            background:linear-gradient(
-                120deg,
-                transparent,
-                rgba(255,255,255,0.8),
-                transparent
-            );
-
-            transform:rotate(25deg);
-            animation: shine 6s linear infinite;
-        }
-
-        @keyframes shine{
-            from{
-                left:-120%;
-            }
-            to{
-                left:220%;
-            }
-        }
-
-        .card-header {
-            height: 100px;
-            background: linear-gradient(
-                45deg,
-                #e3f2fd,
-                #fce4ec,
-                #e1f5fe
-            );
-            border-radius: 15px;
-            margin-bottom: 25px;
-            animation: glowBox 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes glowBox{
-            from{
-                box-shadow:0 0 10px rgba(100,181,246,0.2);
-            }
-            to{
-                box-shadow:0 0 25px rgba(100,181,246,0.5);
-            }
-        }
-
-        h1 {
-            color: #1565c0;
-            font-size: 24px;
-            margin-bottom: 15px;
-
-            animation: glowText 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glowText{
-            from{
-                text-shadow:0 0 5px #90caf9;
-            }
-
-            to{
-                text-shadow:
-                    0 0 10px #42a5f5,
-                    0 0 20px #64b5f6;
-            }
-        }
-
-        p {
-            font-size: 16px;
-            line-height: 1.5;
-            margin: 10px 0;
-        }
-
-        .btn {
-            display: block;
-            background: #1565c0;
-            color: white;
-            padding: 15px;
-            text-decoration: none;
-            border-radius: 30px;
-            margin-top: 25px;
-            font-weight: bold;
-
-            transition: all .3s ease;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse{
-            0%,100%{
-                transform:scale(1);
-            }
-            50%{
-                transform:scale(1.05);
-            }
-        }
-
-        .btn:hover {
-            background: #0d47a1;
-            transform: scale(1.08);
-
-            box-shadow:
-                0 0 10px #42a5f5,
-                0 0 20px #42a5f5,
-                0 0 30px #42a5f5;
-        }
-        @media (max-width:480px){
-            h1{
-                font-size:20px;
-            }
-
-            p{
-                font-size:15px;
-            }
-        }
-    </style>
+.btn:hover{
+    background:#0d47a1;
+    transform:scale(1.08);
+    box-shadow:0 0 10px #42a5f5,0 0 20px #42a5f5,0 0 30px #42a5f5;
+}
+</style>
 </head>
+
 <body>
-    <!-- ดาววิบวับ -->
-    <div class="sparkles">
-        <span>✨</span>
-        <span>✦</span>
-        <span>✨</span>
-        <span>✦</span>
-        <span>✨</span>
-        <span>✦</span>
-    </div>
-    <div class="card">
-        <div class="card-header"></div>
-        <h1>ยินดีต้อนรับสู่โปรไฟล์ของปฐภรณ์</h1>
-        <p>ขณะนี้กำลังศึกษาและสนใจด้านการวาดรูปและงานศิลปะหลากแบบ</p>
-        <p>นี่คือเว็บไซต์แรกของฉันที่โฮสต์บน GitHub Pages</p>
-        <a href="portfolio.html" class="btn">
-            ดูแฟ้มสะสมงานของดิฉัน
-        </a>
-    </div>
+
+<div class="sparkles">
+    <span>✨</span>
+    <span>✦</span>
+    <span>✨</span>
+    <span>✦</span>
+    <span>✨</span>
+    <span>✦</span>
+</div>
+
+<div class="card">
+    <div class="card-header"></div>
+
+    <h1>ยินดีต้อนรับสู่โปรไฟล์ของปฐภรณ์</h1>
+
+    <p>ขณะนี้กำลังศึกษาและสนใจด้านการวาดรูปและงานศิลปะหลากแบบ</p>
+
+    <p>นี่คือเว็บไซต์แรกของฉันที่โฮสต์บน GitHub Pages</p>
+
+    <a href="portfolio.html" class="btn">
+        ดูแฟ้มสะสมงานของดิฉัน
+    </a>
+</div>
+
 </body>
 </html>
 ```
