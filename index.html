@@ -32,7 +32,6 @@ body{
     100%{background-position:0% 50%}
 }
 
-/* ===== เอฟเฟกต์ดาว ===== */
 .sparkles{
     position:fixed;
     inset:0;
@@ -60,7 +59,6 @@ body{
     100%{transform:translateY(-120vh) rotate(360deg);opacity:0}
 }
 
-/* ===== การ์ดหลัก ===== */
 .card{
     width:100%;
     max-width:400px;
@@ -70,10 +68,8 @@ body{
     background:rgba(255,255,255,.95);
     box-shadow:0 15px 35px rgba(0,0,0,.15);
     position:relative;
-    overflow:visible;
-    z-index:10;
+    overflow:hidden;
     animation:cardFloat 4s ease-in-out infinite;
-    transition:.5s;
 }
 
 @keyframes cardFloat{
@@ -81,47 +77,30 @@ body{
     50%{transform:translateY(-10px)}
 }
 
-/* แบบ B: การ์ดขยับนิดเดียว */
-.card:hover{
-    transform:translateX(-25px);
-}
-
-/* แสงวิ่งบนการ์ด */
 .card::before{
     content:"";
     position:absolute;
-    inset:0;
-    border-radius:20px;
-    background:linear-gradient(
-        120deg,
-        transparent 35%,
-        rgba(255,255,255,.5) 50%,
-        transparent 65%
-    );
-    z-index:0;
-    pointer-events:none;
-    transform:translateX(-130%);
-    animation:shine 8s linear infinite;
+    top:-100%;
+    left:-120%;
+    width:60%;
+    height:300%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,.8),transparent);
+    transform:rotate(25deg);
+    animation:shine 6s linear infinite;
 }
 
 @keyframes shine{
-    from{transform:translateX(-130%)}
-    to{transform:translateX(230%)}
+    from{left:-120%}
+    to{left:220%}
 }
 
-/* ===== เนื้อหาการ์ดต้องอยู่บนสุด ===== */
-.card-header,
-h1,p{
-    position:relative;
-    z-index:2;
-}
-
-/* รูป */
+/* 🔥 แก้ตรงนี้: ใส่รูปในกรอบ */
 .card-header{
     height:120px;
     margin-bottom:25px;
     border-radius:15px;
     overflow:hidden;
+    animation:glowBox 3s ease-in-out infinite alternate;
 }
 
 .card-header img{
@@ -130,11 +109,21 @@ h1,p{
     object-fit:cover;
 }
 
-/* ตัวหนังสือ */
+@keyframes glowBox{
+    from{box-shadow:0 0 10px rgba(100,181,246,.2)}
+    to{box-shadow:0 0 25px rgba(100,181,246,.5)}
+}
+
 h1{
     color:#1565c0;
     font-size:24px;
     margin-bottom:15px;
+    animation:glowText 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowText{
+    from{text-shadow:0 0 5px #90caf9}
+    to{text-shadow:0 0 10px #42a5f5,0 0 20px #64b5f6}
 }
 
 p{
@@ -143,69 +132,28 @@ p{
     margin:10px 0;
 }
 
-/* ===== เมนู (ซ่อนอยู่หลังการ์ด) ===== */
-.slide-menu{
-    position:absolute;
-    top:10px;
-    left:100%;
-    width:240px;
-
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-
-    z-index:1;
-}
-
-/* กล่องเมนู */
-.menu{
-    padding:14px 16px;
-    border-radius:16px;
-
+.btn{
+    display:block;
+    margin-top:25px;
+    padding:15px;
+    border-radius:30px;
     text-decoration:none;
-    color:white;
     font-weight:bold;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
-
-    opacity:0;
-    transform:translateX(-220px);
-
-    transition:.6s ease;
+    color:#fff;
+    background:#1565c0;
+    transition:.3s;
+    animation:pulse 2s infinite;
 }
 
-/* hover แล้วค่อยโผล่ */
-.card:hover .menu{
-    opacity:1;
-    transform:translateX(0);
+@keyframes pulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.05)}
 }
 
-/* ไล่ทีละอัน */
-.card:hover .item1{transition-delay:0s}
-.card:hover .item2{transition-delay:.08s}
-.card:hover .item3{transition-delay:.16s}
-.card:hover .item4{transition-delay:.24s}
-
-/* ===== สีพาสเทลแบบสวยขึ้น ===== */
-.item1{
-    background:linear-gradient(135deg,#64b5f6,#bbdefb);
-}
-
-.item2{
-    background:linear-gradient(135deg,#9575cd,#d1c4e9);
-}
-
-.item3{
-    background:linear-gradient(135deg,#f48fb1,#f8bbd0);
-}
-
-.item4{
-    background:linear-gradient(135deg,#4dd0e1,#b2ebf2);
-}
-
-/* hover เมนู */
-.menu:hover{
-    transform:translateX(10px);
+.btn:hover{
+    background:#0d47a1;
+    transform:scale(1.08);
+    box-shadow:0 0 10px #42a5f5,0 0 20px #42a5f5,0 0 30px #42a5f5;
 }
 </style>
 </head>
@@ -223,6 +171,7 @@ p{
 
 <div class="card">
 
+    <!-- 🔥 ใส่รูปตรงนี้ -->
     <div class="card-header">
         <img src="https://i.postimg.cc/9QbP25sP/albrecht-durer-view-of-trente-1494.jpg" alt="profile">
     </div>
@@ -233,27 +182,9 @@ p{
 
     <p>นี่คือเว็บไซต์แรกของฉันที่โฮสต์บน GitHub Pages</p>
 
-    <!-- เมนู -->
-    <div class="slide-menu">
-
-        <a href="personal.html" class="menu item1">
-            👤 ประวัติส่วนตัว
-        </a>
-
-        <a href="activity.html" class="menu item2">
-            🏆 ผลงานด้านกิจกรรม
-        </a>
-
-        <a href="artwork.html" class="menu item3">
-            🎨 ผลงานด้านศิลปะ
-        </a>
-
-        <a href="reason.html" class="menu item4">
-            🎓 เหตุผลที่อยากเข้ามหาวิทยาลัยนี้
-        </a>
-
-    </div>
-
+    <a href="portfolio.html" class="btn">
+        ดูแฟ้มสะสมงานของดิฉัน
+    </a>
 </div>
 
 </body>
