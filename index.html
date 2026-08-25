@@ -4,188 +4,376 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>หน้าแนะนำตัวของปฐภรณ์</title>
-
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:10px;
-    overflow:hidden;
-    font-family:sans-serif;
-    color:#333;
-    background:linear-gradient(-45deg,#e3f2fd,#bbdefb,#fce4ec,#e1f5fe);
-    background-size:400% 400%;
-    animation:bgMove 12s ease infinite;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:10px;
+overflow:hidden;
+font-family:sans-serif;
+color:#333;
+background:linear-gradient(120deg,#70c9ff,#9dc8ff,#b49cff,#d0b5ff,#8fc8ff,#c5a8ff);
+background-size:500% 500%;
+animation:bgMove 15s ease infinite;
+position:relative;
 }
-
+body::before{
+content:"";
+position:fixed;
+width:600px;
+height:600px;
+top:-280px;
+left:-220px;
+border-radius:50%;
+background:radial-gradient(circle,rgba(255,255,255,.5),rgba(200,225,255,.15) 45%,transparent 70%);
+filter:blur(20px);
+animation:lightMove 10s ease-in-out infinite;
+pointer-events:none;
+}
+body::after{
+content:"";
+position:fixed;
+width:600px;
+height:600px;
+right:-250px;
+bottom:-280px;
+border-radius:50%;
+background:radial-gradient(circle,rgba(220,200,255,.5),rgba(180,160,255,.1) 45%,transparent 70%);
+filter:blur(25px);
+animation:lightMove2 13s ease-in-out infinite;
+pointer-events:none;
+}
 @keyframes bgMove{
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+0%{background-position:0% 50%}
+25%{background-position:50% 100%}
+50%{background-position:100% 50%}
+75%{background-position:50% 0%}
+100%{background-position:0% 50%}
 }
-
+@keyframes lightMove{
+0%,100%{transform:translate(0,0) scale(1)}
+50%{transform:translate(100px,80px) scale(1.15)}
+}
+@keyframes lightMove2{
+0%,100%{transform:translate(0,0) scale(1)}
+50%{transform:translate(-90px,-70px) scale(1.12)}
+}
 .sparkles{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:1;
+overflow:hidden;
 }
-
 .sparkles span{
-    position:absolute;
-    bottom:-30px;
-    color:rgba(255,255,255,.9);
-    font-size:20px;
-    animation:floatStar linear infinite;
+position:absolute;
+bottom:-30px;
+color:rgba(255,255,255,.9);
+font-size:20px;
+text-shadow:0 0 8px white,0 0 18px rgba(190,210,255,.9);
+animation:floatStar linear infinite;
 }
-
 .sparkles span:nth-child(1){left:10%;animation-duration:10s}
 .sparkles span:nth-child(2){left:25%;animation-duration:12s}
 .sparkles span:nth-child(3){left:40%;animation-duration:8s}
 .sparkles span:nth-child(4){left:60%;animation-duration:14s}
 .sparkles span:nth-child(5){left:75%;animation-duration:9s}
 .sparkles span:nth-child(6){left:90%;animation-duration:11s}
-
 @keyframes floatStar{
-    0%{transform:translateY(0) rotate(0deg);opacity:0}
-    20%{opacity:1}
-    100%{transform:translateY(-120vh) rotate(360deg);opacity:0}
+0%{transform:translateY(0) rotate(0deg) scale(.6);opacity:0}
+20%{opacity:1}
+50%{transform:translateY(-60vh) rotate(180deg) scale(1.2)}
+100%{transform:translateY(-120vh) rotate(360deg) scale(.7);opacity:0}
 }
-
+.extra-stars{
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:1;
+}
+.extra-stars span{
+position:absolute;
+color:white;
+font-size:13px;
+text-shadow:0 0 7px white,0 0 15px #b8a8ff;
+animation:twinkle 3s ease-in-out infinite;
+}
+.extra-stars span:nth-child(1){top:12%;left:8%;animation-delay:.2s}
+.extra-stars span:nth-child(2){top:20%;left:90%;animation-delay:1s}
+.extra-stars span:nth-child(3){top:72%;left:7%;animation-delay:1.8s}
+.extra-stars span:nth-child(4){top:82%;left:88%;animation-delay:.7s}
+.extra-stars span:nth-child(5){top:35%;left:4%;animation-delay:2s}
+.extra-stars span:nth-child(6){top:60%;left:94%;animation-delay:1.3s}
+.extra-stars span:nth-child(7){top:8%;left:48%;animation-delay:.5s}
+.extra-stars span:nth-child(8){top:92%;left:52%;animation-delay:2.2s}
+@keyframes twinkle{
+0%,100%{opacity:.2;transform:scale(.6) rotate(0deg)}
+50%{opacity:1;transform:scale(1.5) rotate(180deg)}
+}
 .card{
-    width:100%;
-    max-width:400px;
-    padding:20px;
-    text-align:center;
-    border-radius:20px;
-    background:rgba(255,255,255,.95);
-    box-shadow:0 15px 35px rgba(0,0,0,.15);
-    position:relative;
-    overflow:hidden;
-    animation:cardFloat 4s ease-in-out infinite;
+width:100%;
+max-width:400px;
+padding:20px;
+text-align:center;
+border-radius:20px;
+background:rgba(255,255,255,.88);
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.7);
+box-shadow:0 15px 35px rgba(30,50,120,.18),0 0 40px rgba(190,180,255,.18),inset 0 1px 0 rgba(255,255,255,.9);
+position:relative;
+overflow:hidden;
+animation:cardFloat 4s ease-in-out infinite;
+z-index:5;
+transform-style:preserve-3d;
+transition:box-shadow .4s ease;
 }
-
+.card:hover{
+box-shadow:0 20px 45px rgba(30,50,120,.22),0 0 55px rgba(190,175,255,.3),inset 0 1px 0 rgba(255,255,255,.95);
+}
 @keyframes cardFloat{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-10px)}
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
 }
-
 .card::before{
-    content:"";
-    position:absolute;
-    top:-100%;
-    left:-120%;
-    width:60%;
-    height:300%;
-    background:linear-gradient(120deg,transparent,rgba(255,255,255,.8),transparent);
-    transform:rotate(25deg);
-    animation:shine 6s linear infinite;
+content:"";
+position:absolute;
+top:-100%;
+left:-120%;
+width:60%;
+height:300%;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,.8),transparent);
+transform:rotate(25deg);
+animation:shine 6s linear infinite;
+pointer-events:none;
 }
-
+.card::after{
+content:"✦";
+position:absolute;
+top:10px;
+right:15px;
+color:rgba(150,130,255,.45);
+font-size:18px;
+text-shadow:0 0 10px white;
+animation:twinkle 3s ease-in-out infinite;
+}
 @keyframes shine{
-    from{left:-120%}
-    to{left:220%}
+from{left:-120%}
+to{left:220%}
 }
-
-/* 🔥 แก้ตรงนี้: ใส่รูปในกรอบ */
 .card-header{
-    height:120px;
-    margin-bottom:25px;
-    border-radius:15px;
-    overflow:hidden;
-    animation:glowBox 3s ease-in-out infinite alternate;
+height:120px;
+margin-bottom:25px;
+border-radius:15px;
+overflow:hidden;
+animation:glowBox 3s ease-in-out infinite alternate;
+position:relative;
+box-shadow:0 0 15px rgba(100,181,246,.3);
 }
-
+.card-header::after{
+content:"";
+position:absolute;
+inset:0;
+border-radius:15px;
+border:2px solid rgba(255,255,255,.6);
+box-shadow:inset 0 0 20px rgba(255,255,255,.3);
+pointer-events:none;
+}
 .card-header img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+width:100%;
+height:100%;
+object-fit:cover;
+transition:transform .6s ease,filter .6s ease;
 }
-
+.card-header:hover img{
+transform:scale(1.06);
+filter:brightness(1.05);
+}
 @keyframes glowBox{
-    from{box-shadow:0 0 10px rgba(100,181,246,.2)}
-    to{box-shadow:0 0 25px rgba(100,181,246,.5)}
+from{box-shadow:0 0 10px rgba(100,181,246,.2)}
+to{box-shadow:0 0 25px rgba(100,181,246,.5),0 0 40px rgba(170,150,255,.25)}
 }
-
 h1{
-    color:#1565c0;
-    font-size:24px;
-    margin-bottom:15px;
-    animation:glowText 2s ease-in-out infinite alternate;
+color:#5367c9;
+font-size:24px;
+margin-bottom:15px;
+animation:glowText 2s ease-in-out infinite alternate;
+text-shadow:0 2px 8px rgba(90,100,200,.12);
 }
-
 @keyframes glowText{
-    from{text-shadow:0 0 5px #90caf9}
-    to{text-shadow:0 0 10px #42a5f5,0 0 20px #64b5f6}
+from{text-shadow:0 0 5px #90caf9}
+to{text-shadow:0 0 10px #42a5f5,0 0 20px #a78bfa}
 }
-
 p{
-    font-size:16px;
-    line-height:1.5;
-    margin:10px 0;
+font-size:16px;
+line-height:1.5;
+margin:10px 0;
 }
-
 .btn{
-    display:block;
-    margin-top:25px;
-    padding:15px;
-    border-radius:30px;
-    text-decoration:none;
-    font-weight:bold;
-    color:#fff;
-    background:#1565c0;
-    transition:.3s;
-    animation:pulse 2s infinite;
+display:block;
+margin-top:25px;
+padding:15px;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+color:#fff;
+background:linear-gradient(100deg,#1565c0,#667eea,#8e7dff,#1565c0);
+background-size:250% 100%;
+transition:.3s;
+animation:pulse 2s infinite,buttonGradient 5s ease infinite;
+box-shadow:0 5px 18px rgba(60,100,210,.25);
+position:relative;
+overflow:hidden;
 }
-
+.btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:60%;
+height:100%;
+background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);
+transform:skewX(-20deg);
+animation:buttonShine 4s ease-in-out infinite;
+}
+@keyframes buttonShine{
+0%,45%{left:-100%}
+70%,100%{left:150%}
+}
+@keyframes buttonGradient{
+0%,100%{background-position:0% 50%}
+50%{background-position:100% 50%}
+}
 @keyframes pulse{
-    0%,100%{transform:scale(1)}
-    50%{transform:scale(1.05)}
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.05)}
 }
-
 .btn:hover{
-    background:#0d47a1;
-    transform:scale(1.08);
-    box-shadow:0 0 10px #42a5f5,0 0 20px #42a5f5,0 0 30px #42a5f5;
+background:linear-gradient(100deg,#0d47a1,#5c6bc0,#7e57c2);
+transform:scale(1.08);
+box-shadow:0 0 10px #42a5f5,0 0 20px #8e7dff,0 0 35px #a78bfa;
+}
+.mouse-glow{
+position:fixed;
+width:240px;
+height:240px;
+left:0;
+top:0;
+border-radius:50%;
+pointer-events:none;
+z-index:2;
+transform:translate(-50%,-50%);
+background:radial-gradient(circle,rgba(255,255,255,.2),rgba(210,205,255,.08) 35%,transparent 70%);
+filter:blur(5px);
+mix-blend-mode:screen;
+opacity:0;
+transition:opacity .3s ease;
+}
+body:hover .mouse-glow{opacity:1}
+.cursor-dot{
+position:fixed;
+width:7px;
+height:7px;
+border-radius:50%;
+background:white;
+box-shadow:0 0 8px white,0 0 18px #a99cff;
+pointer-events:none;
+z-index:20;
+transform:translate(-50%,-50%);
+opacity:0;
+}
+body:hover .cursor-dot{opacity:.9}
+@media(max-width:600px){
+.mouse-glow,.cursor-dot{display:none}
 }
 </style>
 </head>
-
 <body>
-
 <div class="sparkles">
-    <span>✨</span>
-    <span>✦</span>
-    <span>✨</span>
-    <span>✦</span>
-    <span>✨</span>
-    <span>✦</span>
+<span>✨</span>
+<span>✦</span>
+<span>✨</span>
+<span>✦</span>
+<span>✨</span>
+<span>✦</span>
 </div>
-
-<div class="card">
-
-    <!-- 🔥 ใส่รูปตรงนี้ -->
-    <div class="card-header">
-        <img src="https://i.postimg.cc/9QbP25sP/albrecht-durer-view-of-trente-1494.jpg" alt="profile">
-    </div>
-
-    <h1>ยินดีต้อนรับสู่โปรไฟล์ของปฐภรณ์</h1>
-
-    <p>ขณะนี้กำลังศึกษาและสนใจด้านการวาดรูปและงานศิลปะหลากแบบ</p>
-
-    <p>นี่คือเว็บไซต์แรกของฉันที่โฮสต์บน GitHub Pages</p>
-
-    <a href="portfolio.html" class="btn">
-        ดูแฟ้มสะสมงานของดิฉัน
-    </a>
+<div class="extra-stars">
+<span>✦</span>
+<span>✧</span>
+<span>✦</span>
+<span>✧</span>
+<span>✦</span>
+<span>✧</span>
+<span>✦</span>
+<span>✧</span>
 </div>
-
+<div class="mouse-glow" id="mouseGlow"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="card" id="card">
+<div class="card-header">
+<img src="https://i.postimg.cc/9QbP25sP/albrecht-durer-view-of-trente-1494.jpg" alt="profile">
+</div>
+<h1>ยินดีต้อนรับสู่โปรไฟล์ของปฐภรณ์</h1>
+<p>ขณะนี้กำลังศึกษาและสนใจด้านการวาดรูปและงานศิลปะหลากแบบ</p>
+<p>นี่คือเว็บไซต์แรกของฉันที่โฮสต์บน GitHub Pages</p>
+<a href="portfolio.html" class="btn">ดูแฟ้มสะสมงานของดิฉัน</a>
+</div>
+<script>
+const mouseGlow=document.getElementById("mouseGlow");
+const cursorDot=document.getElementById("cursorDot");
+const card=document.getElementById("card");
+let mouseX=innerWidth/2;
+let mouseY=innerHeight/2;
+let currentX=mouseX;
+let currentY=mouseY;
+document.addEventListener("mousemove",e=>{
+mouseX=e.clientX;
+mouseY=e.clientY;
+});
+function animate(){
+currentX+=(mouseX-currentX)*.12;
+currentY+=(mouseY-currentY)*.12;
+mouseGlow.style.left=`${currentX}px`;
+mouseGlow.style.top=`${currentY}px`;
+cursorDot.style.left=`${mouseX}px`;
+cursorDot.style.top=`${mouseY}px`;
+if(innerWidth>600){
+const rect=card.getBoundingClientRect();
+const x=mouseX-(rect.left+rect.width/2);
+const y=mouseY-(rect.top+rect.height/2);
+const rotateX=-y/80;
+const rotateY=x/80;
+card.style.transform=`perspective(900px) translateY(-4px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+}
+requestAnimationFrame(animate);
+}
+animate();
+card.addEventListener("mouseleave",()=>{
+card.style.transform="";
+});
+document.addEventListener("click",e=>{
+const sparkle=document.createElement("span");
+sparkle.textContent="✦";
+sparkle.style.position="fixed";
+sparkle.style.left=`${e.clientX}px`;
+sparkle.style.top=`${e.clientY}px`;
+sparkle.style.color="white";
+sparkle.style.fontSize=`${Math.random()*10+14}px`;
+sparkle.style.pointerEvents="none";
+sparkle.style.zIndex="100";
+sparkle.style.textShadow="0 0 10px white,0 0 20px #a99cff";
+sparkle.style.transform="translate(-50%,-50%)";
+sparkle.style.transition="all .8s ease";
+document.body.appendChild(sparkle);
+requestAnimationFrame(()=>{
+sparkle.style.opacity="0";
+sparkle.style.transform=`translate(${Math.random()*60-30}px,${Math.random()*-70-20}px) scale(1.6) rotate(180deg)`;
+});
+setTimeout(()=>sparkle.remove(),800);
+});
+</script>
 </body>
 </html>
