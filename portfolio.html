@@ -7,6 +7,11 @@
 <title>ประวัติส่วนตัว | นางสาวปฐภรณ์ บุญฤทธิ์</title>
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
     margin:0;
     padding:0;
@@ -14,112 +19,699 @@
     font-family:'Segoe UI',sans-serif;
 }
 
+
+/* =========================================================
+   BODY / ANIMATED BACKGROUND
+========================================================= */
+
 body{
-    background: linear-gradient(135deg,#89f7fe,#66a6ff);
+    background:
+        linear-gradient(
+            120deg,
+            #72c9ff,
+            #91bfff,
+            #a99cff,
+            #c3a8ff,
+            #8bbcff,
+            #bba4ff,
+            #75caff
+        );
+
+    background-size:500% 500%;
+    animation:gradientMove 16s ease infinite;
+
     min-height:100vh;
     overflow-x:hidden;
+    position:relative;
+
+    background-attachment:fixed;
+
+    cursor:default;
 }
 
-/* พื้นหลังลูกเล่น */
+
+/* แสงอ่อนทั่วพื้นหลัง */
+
 body::before{
     content:'';
     position:fixed;
-    width:400px;
-    height:400px;
-    background:rgba(255,255,255,0.2);
+
+    width:650px;
+    height:650px;
+
+    top:-250px;
+    left:-200px;
+
     border-radius:50%;
-    top:-150px;
-    left:-150px;
-    filter:blur(50px);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.38) 0%,
+            rgba(210,230,255,.20) 35%,
+            transparent 70%
+        );
+
+    filter:blur(30px);
+
+    animation:floatLight 10s ease-in-out infinite;
+
+    pointer-events:none;
+    z-index:0;
 }
+
+
+/* แสงมุมขวาล่าง */
 
 body::after{
     content:'';
+
     position:fixed;
-    width:350px;
-    height:350px;
-    background:rgba(255,255,255,0.15);
+
+    width:650px;
+    height:650px;
+
+    right:-250px;
+    bottom:-250px;
+
     border-radius:50%;
-    bottom:-100px;
-    right:-100px;
-    filter:blur(50px);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(226,207,255,.42) 0%,
+            rgba(255,255,255,.14) 40%,
+            transparent 72%
+        );
+
+    filter:blur(35px);
+
+    animation:floatLight2 13s ease-in-out infinite;
+
+    pointer-events:none;
+    z-index:0;
 }
+
+
+/* =========================================================
+   STAR FIELD
+========================================================= */
+
+.stars{
+    position:fixed;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    pointer-events:none;
+    overflow:hidden;
+
+    z-index:1;
+}
+
+
+/* ดาวแต่ละดวง */
+
+.star{
+    position:absolute;
+
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 6px rgba(255,255,255,.95),
+        0 0 12px rgba(220,230,255,.7);
+
+    animation:
+        twinkle var(--duration) ease-in-out infinite,
+        starFloat var(--float) ease-in-out infinite;
+
+    animation-delay:var(--delay);
+
+    opacity:.5;
+}
+
+
+/* ดาว 4 แฉก */
+
+.star.cross{
+    width:0;
+    height:0;
+
+    background:transparent;
+
+    box-shadow:none;
+}
+
+.star.cross::before,
+.star.cross::after{
+    content:'✦';
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    color:rgba(255,255,255,.9);
+
+    font-size:var(--size);
+
+    text-shadow:
+        0 0 8px white,
+        0 0 18px rgba(220,220,255,.8);
+}
+
+
+/* =========================================================
+   DECORATIVE GLOW ORBS
+========================================================= */
+
+.orb{
+    position:fixed;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:1;
+
+    mix-blend-mode:screen;
+
+    filter:blur(1px);
+
+    opacity:.5;
+}
+
+.orb1{
+    width:180px;
+    height:180px;
+
+    top:18%;
+    left:5%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.35),
+            rgba(190,210,255,.08),
+            transparent 70%
+        );
+
+    animation:orbMove1 12s ease-in-out infinite;
+}
+
+.orb2{
+    width:240px;
+    height:240px;
+
+    top:55%;
+    right:3%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(231,211,255,.35),
+            rgba(170,150,255,.08),
+            transparent 70%
+        );
+
+    animation:orbMove2 15s ease-in-out infinite;
+}
+
+.orb3{
+    width:120px;
+    height:120px;
+
+    bottom:8%;
+    left:30%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.3),
+            transparent 70%
+        );
+
+    animation:orbMove3 9s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   CONTAINER DECORATION
+========================================================= */
+
+.container::before,
+.container::after{
+    position:fixed;
+
+    color:rgba(255,255,255,.75);
+
+    pointer-events:none;
+
+    z-index:1;
+
+    text-shadow:
+        0 0 8px white,
+        0 0 18px rgba(200,220,255,.7);
+}
+
+.container::before{
+    content:'✦';
+
+    top:16%;
+    left:8%;
+
+    font-size:25px;
+
+    animation:
+        sparkle 4s ease-in-out infinite,
+        rotateStar 8s linear infinite;
+}
+
+.container::after{
+    content:'✧';
+
+    bottom:18%;
+    right:8%;
+
+    font-size:32px;
+
+    animation:
+        sparkle 5s ease-in-out infinite,
+        rotateStar 10s linear infinite;
+
+    animation-delay:1.5s;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
 
 .container{
     width:90%;
     max-width:1200px;
+
     margin:auto;
     padding:40px 0;
+
+    position:relative;
+
+    z-index:2;
 }
 
-/* Hero Section */
+
+/* =========================================================
+   HERO
+========================================================= */
+
 .hero{
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:30px;
+
     align-items:center;
 }
 
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
 .profile-box{
     position:relative;
+
     display:flex;
     justify-content:center;
+
+    transform-style:preserve-3d;
+
+    transition:transform .2s ease-out;
 }
+
+
+/* วงแหวนแสงรอบรูป */
+
+.profile-box::before{
+    content:'';
+
+    position:absolute;
+
+    width:340px;
+    height:340px;
+
+    border-radius:50%;
+
+    background:
+        conic-gradient(
+            from 0deg,
+            rgba(255,255,255,.05),
+            rgba(210,190,255,.65),
+            rgba(255,255,255,.15),
+            rgba(130,200,255,.55),
+            rgba(255,255,255,.05)
+        );
+
+    filter:blur(16px);
+
+    animation:
+        imageGlow 4s ease-in-out infinite,
+        ringRotate 12s linear infinite;
+
+    z-index:-1;
+}
+
+
+/* วงแหวนเส้นบาง */
+
+.profile-box::after{
+    content:'';
+
+    position:absolute;
+
+    width:365px;
+    height:365px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.38);
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.2),
+        inset 0 0 20px rgba(255,255,255,.15);
+
+    animation:ringRotateReverse 18s linear infinite;
+
+    pointer-events:none;
+
+    z-index:-1;
+}
+
 
 .profile-img{
     width:320px;
     height:320px;
+
     border-radius:40px;
+
     object-fit:cover;
+
     border:8px solid white;
-    box-shadow:0 20px 50px rgba(0,0,0,.2);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.2),
+        0 0 35px rgba(255,255,255,.35),
+        0 0 70px rgba(190,180,255,.25);
+
     transform:rotate(-5deg);
+
+    transition:
+        transform .25s ease,
+        box-shadow .4s ease;
+
+    position:relative;
+
+    z-index:2;
 }
 
-/* กล่องข้อมูล */
-.glass{
-    background:rgba(255,255,255,0.2);
-    backdrop-filter:blur(15px);
-    border:1px solid rgba(255,255,255,0.3);
-    border-radius:25px;
-    padding:25px;
-    color:white;
-    box-shadow:0 10px 30px rgba(0,0,0,.1);
+.profile-img:hover{
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.25),
+        0 0 40px rgba(255,255,255,.55),
+        0 0 90px rgba(190,170,255,.4);
 }
+
+
+/* =========================================================
+   GLASS BOX
+========================================================= */
+
+.glass{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.27),
+            rgba(255,255,255,.12)
+        );
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,255,255,.42);
+
+    border-radius:25px;
+
+    padding:25px;
+
+    color:white;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.1),
+        inset 0 1px 0 rgba(255,255,255,.35),
+        inset 0 -1px 0 rgba(255,255,255,.08);
+
+    transition:
+        background .4s ease,
+        box-shadow .4s ease,
+        transform .2s ease;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+
+/* แสงสะท้อนบน Glass */
+
+.glass::before{
+    content:'';
+
+    position:absolute;
+
+    top:-100%;
+    left:-40%;
+
+    width:50%;
+    height:300%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.18),
+            transparent
+        );
+
+    transform:rotate(25deg);
+
+    animation:glassShine 7s ease-in-out infinite;
+
+    pointer-events:none;
+}
+
+.glass:hover{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.33),
+            rgba(255,255,255,.15)
+        );
+
+    box-shadow:
+        0 18px 45px rgba(40,30,120,.2),
+        inset 0 1px 0 rgba(255,255,255,.45),
+        0 0 30px rgba(200,190,255,.12);
+}
+
+
+/* =========================================================
+   INTRO TEXT
+========================================================= */
 
 .intro h1{
     font-size:3rem;
+
     margin-bottom:10px;
+
+    text-shadow:
+        0 3px 15px rgba(0,0,0,.15),
+        0 0 25px rgba(255,255,255,.2);
+
+    letter-spacing:1px;
 }
 
 .intro p{
     line-height:1.8;
+
+    text-shadow:
+        0 2px 8px rgba(0,0,0,.1);
 }
 
-/* Layout แปลกๆ */
+
+/* =========================================================
+   ORIGINAL GRID — ไม่เปลี่ยน Layout
+========================================================= */
+
 .grid-area{
     margin-top:60px;
+
     display:grid;
+
     grid-template-columns:repeat(6,1fr);
+
     gap:20px;
 }
 
+
+/* =========================================================
+   CARDS
+========================================================= */
+
 .card{
-    background:white;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.97),
+            rgba(248,247,255,.94)
+        );
+
     border-radius:25px;
+
     padding:25px;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-    transition:.4s;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.08),
+        0 0 0 1px rgba(255,255,255,.35),
+        0 0 25px rgba(160,150,255,.05);
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+
+    position:relative;
+
+    overflow:hidden;
+
+    transform-style:preserve-3d;
 }
+
+
+/* แสงวิ่งด้านบน */
+
+.card::before{
+    content:'';
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:70%;
+    height:3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #a58cff,
+            #6ec7ff,
+            white,
+            transparent
+        );
+
+    transition:.7s ease;
+
+    box-shadow:
+        0 0 12px rgba(130,120,255,.5);
+}
+
+.card:hover::before{
+    left:130%;
+}
+
+
+/* แสงด้านข้าง */
+
+.card::after{
+    content:'';
+
+    position:absolute;
+
+    width:100px;
+    height:100px;
+
+    right:-50px;
+    top:-50px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(170,150,255,.15),
+            transparent 70%
+        );
+
+    transition:.5s ease;
+
+    pointer-events:none;
+}
+
+.card:hover::after{
+    transform:scale(2);
+}
+
+
+/* Hover เดิม + เพิ่ม Glow */
 
 .card:hover{
-    transform:translateY(-8px) rotate(1deg);
+    transform:
+        translateY(-8px)
+        rotate(1deg);
+
+    box-shadow:
+        0 18px 40px rgba(45,40,130,.15),
+        0 0 25px rgba(130,120,255,.12),
+        0 0 50px rgba(170,150,255,.08);
 }
 
+
 .card h2{
-    color:#1565c0;
+    color:#5367c9;
+
     margin-bottom:10px;
+
+    text-shadow:
+        0 2px 10px rgba(100,100,200,.08);
 }
+
+.card p{
+    line-height:1.8;
+
+    color:#444;
+}
+
+.card li{
+    margin-bottom:8px;
+
+    line-height:1.7;
+
+    color:#444;
+}
+
+
+/* =========================================================
+   ORIGINAL CARD SPANS — ห้ามเปลี่ยน
+========================================================= */
 
 .card1{
     grid-column:span 2;
@@ -138,42 +730,217 @@ body::after{
     grid-column:span 3;
 }
 
-/* ช่องรูปผลงาน */
+
+/* =========================================================
+   PHOTO BOX
+========================================================= */
+
 .photo-box{
     width:100%;
     height:220px;
-    border:3px dashed #90caf9;
+
+    border:3px dashed #a9a0ef;
+
     border-radius:20px;
+
     display:flex;
+
     justify-content:center;
     align-items:center;
+
     color:#777;
+
     margin-top:10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(79,172,254,.05),
+            rgba(142,125,255,.08)
+        );
+
+    transition:.4s ease;
+
+    position:relative;
+
+    overflow:hidden;
 }
 
-/* Timeline */
+
+/* แสงในช่องรูป */
+
+.photo-box::before{
+    content:'✦';
+
+    position:absolute;
+
+    top:15px;
+    right:20px;
+
+    color:rgba(145,125,255,.35);
+
+    font-size:22px;
+
+    animation:sparkle 3s ease-in-out infinite;
+}
+
+.photo-box::after{
+    content:'';
+
+    position:absolute;
+
+    width:80px;
+    height:80px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(160,145,255,.12),
+            transparent 70%
+        );
+
+    left:15px;
+    bottom:5px;
+
+    animation:photoOrb 5s ease-in-out infinite;
+}
+
+.photo-box:hover{
+    border-color:#7c6cff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(79,172,254,.12),
+            rgba(142,125,255,.14)
+        );
+
+    box-shadow:
+        inset 0 0 25px rgba(124,108,255,.08),
+        0 0 25px rgba(130,120,255,.1);
+}
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
 .timeline{
     position:relative;
+
     margin-top:60px;
 }
 
+
+/* เส้นกลาง */
+
 .timeline::before{
     content:'';
+
     position:absolute;
+
     left:50%;
+
     width:5px;
     height:100%;
-    background:white;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #d1c8ff,
+            #aebcff,
+            #ffffff,
+            #c8bfff,
+            #ffffff
+        );
+
+    background-size:100% 300%;
+
+    animation:timelineGlow 7s linear infinite;
+
     transform:translateX(-50%);
+
+    border-radius:10px;
+
+    box-shadow:
+        0 0 15px rgba(255,255,255,.5),
+        0 0 30px rgba(180,170,255,.18);
 }
+
 
 .event{
     width:45%;
-    background:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.97),
+            rgba(248,247,255,.94)
+        );
+
     padding:20px;
+
     border-radius:20px;
+
     margin:30px 0;
-    box-shadow:0 10px 25px rgba(0,0,0,.1);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.1),
+        0 0 20px rgba(255,255,255,.12);
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+
+/* จุด Timeline */
+
+.event::before{
+    content:'';
+
+    position:absolute;
+
+    width:14px;
+    height:14px;
+
+    border-radius:50%;
+
+    background:white;
+
+    border:4px solid #a99cff;
+
+    box-shadow:
+        0 0 12px rgba(160,145,255,.8);
+
+    top:28px;
+}
+
+.left::before{
+    right:-33px;
+}
+
+.right::before{
+    left:-33px;
+}
+
+
+.event:hover{
+    transform:
+        translateY(-5px)
+        scale(1.01);
+
+    box-shadow:
+        0 15px 35px rgba(40,40,130,.15),
+        0 0 25px rgba(255,255,255,.2),
+        0 0 40px rgba(170,155,255,.08);
 }
 
 .left{
@@ -185,93 +952,574 @@ body::after{
 }
 
 .event h3{
-    color:#1976d2;
+    color:#6575d2;
+
+    margin-bottom:5px;
+
+    text-shadow:
+        0 2px 8px rgba(100,110,210,.12);
 }
 
-/* Footer */
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
 .footer{
     text-align:center;
+
     color:white;
+
     margin-top:50px;
+
     padding-bottom:30px;
+
+    text-shadow:
+        0 2px 10px rgba(0,0,0,.15),
+        0 0 15px rgba(255,255,255,.2);
+
+    letter-spacing:1px;
+
+    animation:footerFloat 4s ease-in-out infinite;
 }
+
+
+/* =========================================================
+   MOUSE FOLLOW SYSTEM
+   ไม่เปลี่ยน Layout
+========================================================= */
+
+.mouse-glow{
+    position:fixed;
+
+    width:260px;
+    height:260px;
+
+    left:0;
+    top:0;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:999;
+
+    transform:
+        translate(-50%,-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.18) 0%,
+            rgba(220,215,255,.08) 30%,
+            transparent 70%
+        );
+
+    filter:blur(5px);
+
+    mix-blend-mode:screen;
+
+    opacity:0;
+
+    transition:opacity .3s ease;
+}
+
+body:hover .mouse-glow{
+    opacity:1;
+}
+
+
+/* จุดเล็กตามเมาส์ */
+
+.cursor-dot{
+    position:fixed;
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 8px white,
+        0 0 18px rgba(190,180,255,.9);
+
+    pointer-events:none;
+
+    z-index:1000;
+
+    transform:
+        translate(-50%,-50%);
+
+    opacity:0;
+
+    transition:opacity .3s ease;
+}
+
+body:hover .cursor-dot{
+    opacity:.9;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes gradientMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    25%{
+        background-position:50% 100%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    75%{
+        background-position:50% 0%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+}
+
+
+@keyframes floatLight{
+
+    0%,100%{
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    50%{
+        transform:
+            translate(100px,80px)
+            scale(1.15);
+    }
+}
+
+
+@keyframes floatLight2{
+
+    0%,100%{
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    50%{
+        transform:
+            translate(-90px,-70px)
+            scale(1.12);
+    }
+}
+
+
+@keyframes sparkle{
+
+    0%,100%{
+        opacity:.25;
+        transform:
+            scale(.8)
+            rotate(0deg);
+    }
+
+    50%{
+        opacity:1;
+        transform:
+            scale(1.35)
+            rotate(180deg);
+    }
+}
+
+
+@keyframes rotateStar{
+
+    from{
+        rotate:0deg;
+    }
+
+    to{
+        rotate:360deg;
+    }
+}
+
+
+@keyframes imageGlow{
+
+    0%,100%{
+        opacity:.45;
+        transform:scale(.95);
+    }
+
+    50%{
+        opacity:.85;
+        transform:scale(1.05);
+    }
+}
+
+
+@keyframes ringRotate{
+
+    from{
+        rotate:0deg;
+    }
+
+    to{
+        rotate:360deg;
+    }
+}
+
+
+@keyframes ringRotateReverse{
+
+    from{
+        rotate:360deg;
+    }
+
+    to{
+        rotate:0deg;
+    }
+}
+
+
+@keyframes glassShine{
+
+    0%{
+        left:-80%;
+    }
+
+    45%,100%{
+        left:150%;
+    }
+}
+
+
+@keyframes twinkle{
+
+    0%,100%{
+        opacity:.2;
+        transform:scale(.6);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.4);
+    }
+}
+
+
+@keyframes starFloat{
+
+    0%,100%{
+        margin-top:0;
+    }
+
+    50%{
+        margin-top:-12px;
+    }
+}
+
+
+@keyframes orbMove1{
+
+    0%,100%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(80px,40px) scale(1.2);
+    }
+}
+
+
+@keyframes orbMove2{
+
+    0%,100%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(-70px,-50px) scale(1.15);
+    }
+}
+
+
+@keyframes orbMove3{
+
+    0%,100%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(40px,-35px) scale(1.2);
+    }
+}
+
+
+@keyframes photoOrb{
+
+    0%,100%{
+        transform:translate(0,0);
+        opacity:.5;
+    }
+
+    50%{
+        transform:translate(30px,-15px) scale(1.3);
+        opacity:1;
+    }
+}
+
+
+@keyframes timelineGlow{
+
+    0%{
+        background-position:0% 0%;
+    }
+
+    100%{
+        background-position:0% 300%;
+    }
+}
+
+
+@keyframes footerFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-4px);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
 @media(max-width:900px){
 
-.hero{
-    grid-template-columns:1fr;
-    text-align:center;
+    .hero{
+        grid-template-columns:1fr;
+
+        text-align:center;
+    }
+
+
+    .profile-img{
+        width:250px;
+        height:250px;
+    }
+
+
+    .profile-box::before{
+        width:280px;
+        height:280px;
+    }
+
+    .profile-box::after{
+        width:300px;
+        height:300px;
+    }
+
+
+    .grid-area{
+        grid-template-columns:1fr;
+    }
+
+
+    .card1,
+    .card2,
+    .card3,
+    .card4{
+        grid-column:span 1;
+    }
+
+
+    .timeline::before{
+        display:none;
+    }
+
+
+    .event{
+        width:100%;
+    }
+
+
+    .event::before{
+        display:none;
+    }
 }
 
-.profile-img{
-    width:250px;
-    height:250px;
+
+/* มือถือไม่ต้องใช้ Mouse Glow */
+
+@media(max-width:600px){
+
+    .mouse-glow,
+    .cursor-dot{
+        display:none;
+    }
+
+    .container{
+        width:92%;
+        padding-top:25px;
+    }
+
+    .intro h1{
+        font-size:2.3rem;
+    }
+
 }
 
-.grid-area{
-    grid-template-columns:1fr;
+
+/* ลด animation หากผู้ใช้เปิด Reduce Motion */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+    }
+
 }
 
-.card1,.card2,.card3,.card4{
-    grid-column:span 1;
-}
-
-.timeline::before{
-    display:none;
-}
-
-.event{
-    width:100%;
-}
-}
 </style>
 
 </head>
+
+
 <body>
+
+
+<!-- =========================================================
+     DECORATIVE BACKGROUND
+========================================================= -->
+
+<div class="stars" id="stars"></div>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<div class="mouse-glow" id="mouseGlow"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
 
 <div class="container">
 
-```
-<!-- ส่วนบน -->
+
+<!-- =========================================================
+     ส่วนบน
+========================================================= -->
+
 <section class="hero">
 
-    <div class="profile-box">
+
+    <div class="profile-box" id="profileBox">
+
         <!-- ใส่รูปตัวเอง -->
-        <img src="https://i.postimg.cc/Nj4KpjRX/41425.jpg" alt="Profile" class="profile-img">
+
+        <img
+            src="https://i.postimg.cc/Nj4KpjRX/41425.jpg"
+            alt="Profile"
+            class="profile-img"
+        >
+
     </div>
 
+
     <div class="glass intro">
+
         <h1>ปฐภรณ์</h1>
+
         <p>
-            สนใจด้านศิลปะ การออกแบบ และการสร้างสรรค์ผลงาน
-            สามารถวาดภาพได้หลายแบบ และใช้เทคนิคสีได้
-            พร้อมเรียนรู้สิ่งใหม่อยู่เสมอ
+            นักเรียนผู้มีความสนใจและหลงใหลในโลกแห่งศิลปะ
+            การออกแบบ และการสร้างสรรค์ผลงานที่สะท้อนความเป็นตัวเอง
+            มีความตั้งใจในการพัฒนาทักษะด้านศิลปะอย่างต่อเนื่อง
+            พร้อมเปิดรับประสบการณ์และเรียนรู้สิ่งใหม่ ๆ อยู่เสมอ
+            โดยเชื่อว่าความคิดสร้างสรรค์สามารถเปลี่ยนจินตนาการ
+            ให้กลายเป็นผลงานที่มีคุณค่าและน่าจดจำได้
         </p>
+
     </div>
+
 
 </section>
 
-<!-- Layout แบบไม่สมมาตร -->
+
+
+<!-- =========================================================
+     Layout เดิม — ไม่เปลี่ยน
+========================================================= -->
+
 <section class="grid-area">
 
+
     <div class="card card1">
+
         <h2>👤 ข้อมูลส่วนตัว</h2>
-        <p><b>ชื่อ :</b> นางสาวปฐภรณ์ บุญฤทธิ์</p>
-        <p><b>อายุ :</b> 17 ปี</p>
-        <p><b>โรงเรียน :</b> บ้านบึง"อุตสาหกรรมนุเคราะห์"</p>
-        <p><b>งานอดิเรก :</b> วาดภาพ ฟังเพลง อ่านหนังสือ</p>
+
+        <p>
+            <b>ชื่อ :</b>
+            นางสาวปฐภรณ์ บุญฤทธิ์
+        </p>
+
+        <p>
+            <b>อายุ :</b>
+            17 ปี
+        </p>
+
+        <p>
+            <b>โรงเรียน :</b>
+            บ้านบึง"อุตสาหกรรมนุเคราะห์"
+        </p>
+
+        <p>
+            <b>งานอดิเรก :</b>
+            วาดภาพ ฟังเพลง อ่านหนังสือ
+        </p>
+
     </div>
+
+
 
     <div class="card card2">
+
         <h2>🌟 ความสามารถพิเศษ</h2>
+
         <p>
-            วาดภาพดิจิทัล, ออกแบบโปสเตอร์,
-            ใช้ Canva, Photoshop,สามารถวาดภาพได้หลายแบบ และเทคนิคสี
-            และมีความคิดสร้างสรรค์ในการออกแบบงานศิลป์
+            มีความสามารถด้านศิลปะและการออกแบบที่หลากหลาย
+            สามารถสร้างสรรค์ผลงานวาดภาพได้หลายรูปแบบ
+            ทั้งการวาดภาพเหมือน ภาพการ์ตูน ภาพประกอบ
+            และงานศิลป์ที่ใช้เทคนิคสีหลากหลายประเภท
+            รวมถึงมีความสนใจในการออกแบบโปสเตอร์และสื่อสร้างสรรค์
+            สามารถประยุกต์ใช้โปรแกรม Canva และ Photoshop
+            เพื่อออกแบบและตกแต่งผลงานให้มีความสวยงาม
+            ทันสมัย และสื่อสารแนวคิดได้อย่างชัดเจน
+            นอกจากนี้ยังเป็นผู้ที่มีความคิดสร้างสรรค์
+            ใส่ใจในรายละเอียด และพร้อมเรียนรู้เทคนิคใหม่ ๆ
+            เพื่อนำมาพัฒนาผลงานของตนเองให้ดียิ่งขึ้น
         </p>
+
     </div>
 
+
+
     <div class="card card3">
+
         <h2>🎨 ผลงานเด่น</h2>
 
         <div class="photo-box">
@@ -280,48 +1528,409 @@ body::after{
 
     </div>
 
+
+
     <div class="card card4">
+
         <h2>🏆 รางวัล / กิจกรรม</h2>
+
         <ul>
-            <li>แข่งขันวาดภาพระดับโรงเรียน</li>
-            <li>ร่วมกิจกรรมสัปดาห์วิทยาศาสตร์</li>
-            <li>นิทรรศการผลงานนักเรียน</li>
+
+            <li>
+                เข้าร่วมการแข่งขันวาดภาพและกิจกรรมด้านศิลปะภายในโรงเรียน
+            </li>
+
+            <li>
+                ร่วมกิจกรรมสัปดาห์วิทยาศาสตร์และสร้างสรรค์ผลงานที่เกี่ยวข้อง
+            </li>
+
+            <li>
+                เข้าร่วมนิทรรศการและนำเสนอผลงานศิลปะของนักเรียน
+            </li>
+
         </ul>
+
     </div>
+
 
 </section>
 
-<!-- Timeline -->
+
+
+<!-- =========================================================
+     TIMELINE เดิม
+========================================================= -->
+
 <section class="timeline">
 
+
     <div class="event left">
+
         <h3>2023</h3>
-        <p>เริ่มเข้าร่วมกิจกรรมด้านศิลปะ</p>
+
+        <p>
+            เริ่มเข้าร่วมกิจกรรมด้านศิลปะ
+            และค้นพบความสนใจในการวาดภาพ
+        </p>
+
     </div>
 
+
+
     <div class="event right">
+
         <h3>2024</h3>
-        <p>สร้างผลงานวาดภาพชุดแรก</p>
+
+        <p>
+            เริ่มสร้างสรรค์ผลงานวาดภาพชุดแรก
+            และทดลองใช้เทคนิคสีที่หลากหลาย
+        </p>
+
     </div>
+
+
 
     <div class="event left">
+
         <h3>2025</h3>
-        <p>เข้าร่วมประกวดวาดภาพ</p>
+
+        <p>
+            เข้าร่วมกิจกรรมและการประกวดวาดภาพ
+            พร้อมพัฒนาทักษะด้านศิลปะอย่างต่อเนื่อง
+        </p>
+
     </div>
 
+
+
     <div class="event right">
+
         <h3>2026</h3>
-        <p>พัฒนาแฟ้มสะสมผลงานออนไลน์</p>
+
+        <p>
+            พัฒนาแฟ้มสะสมผลงานออนไลน์
+            เพื่อรวบรวมและนำเสนอผลงานด้านศิลปะและการออกแบบ
+        </p>
+
     </div>
+
 
 </section>
+
+
 
 <div class="footer">
     ✨ Portfolio by Pathaporn ✨
 </div>
-```
+
 
 </div>
 
+
+
+<script>
+
+/* =========================================================
+   RANDOM STAR GENERATOR
+========================================================= */
+
+const starsContainer =
+    document.getElementById("stars");
+
+
+const starCount =
+    window.innerWidth < 600 ? 45 : 85;
+
+
+for(let i = 0; i < starCount; i++){
+
+    const star =
+        document.createElement("span");
+
+    star.classList.add("star");
+
+
+    /* สลับดาวธรรมดา / ดาว 4 แฉก */
+
+    if(Math.random() > .78){
+
+        star.classList.add("cross");
+
+        star.style.setProperty(
+            "--size",
+            `${Math.random() * 12 + 12}px`
+        );
+
+    }
+
+
+    star.style.left =
+        `${Math.random() * 100}%`;
+
+    star.style.top =
+        `${Math.random() * 100}%`;
+
+
+    star.style.setProperty(
+        "--duration",
+        `${Math.random() * 3 + 2}s`
+    );
+
+
+    star.style.setProperty(
+        "--float",
+        `${Math.random() * 5 + 4}s`
+    );
+
+
+    star.style.setProperty(
+        "--delay",
+        `${Math.random() * 5}s`
+    );
+
+
+    starsContainer.appendChild(star);
+}
+
+
+
+/* =========================================================
+   MOUSE FOLLOW EFFECT
+   ไม่แก้ Layout
+========================================================= */
+
+const mouseGlow =
+    document.getElementById("mouseGlow");
+
+const cursorDot =
+    document.getElementById("cursorDot");
+
+const profileBox =
+    document.getElementById("profileBox");
+
+
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+
+let currentX = mouseX;
+let currentY = mouseY;
+
+
+document.addEventListener("mousemove", (e) => {
+
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+});
+
+
+/* ทำให้แสงตามเม้าส์นุ่ม ไม่กระตุก */
+
+function animateMouse(){
+
+    currentX +=
+        (mouseX - currentX) * 0.12;
+
+    currentY +=
+        (mouseY - currentY) * 0.12;
+
+
+    mouseGlow.style.left =
+        `${currentX}px`;
+
+    mouseGlow.style.top =
+        `${currentY}px`;
+
+
+    cursorDot.style.left =
+        `${mouseX}px`;
+
+    cursorDot.style.top =
+        `${mouseY}px`;
+
+
+    /*
+       รูปด้านบนจะเอียงเล็กน้อย
+       ตามตำแหน่งเม้าส์
+       ไม่กระทบ Grid Layout
+    */
+
+    if(window.innerWidth > 900){
+
+        const centerX =
+            window.innerWidth / 2;
+
+        const centerY =
+            window.innerHeight / 2;
+
+
+        const rotateY =
+            (mouseX - centerX) / 80;
+
+        const rotateX =
+            (centerY - mouseY) / 80;
+
+
+        profileBox.style.transform =
+            `perspective(900px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)`;
+    }
+
+
+    requestAnimationFrame(animateMouse);
+
+}
+
+animateMouse();
+
+
+
+/* =========================================================
+   CARD MOUSE TILT
+   ขยับตามเม้าส์แบบเบามาก
+========================================================= */
+
+const cards =
+    document.querySelectorAll(".card");
+
+
+cards.forEach(card => {
+
+    card.addEventListener("mousemove", (e) => {
+
+        if(window.innerWidth <= 900)
+            return;
+
+
+        const rect =
+            card.getBoundingClientRect();
+
+
+        const x =
+            e.clientX - rect.left;
+
+        const y =
+            e.clientY - rect.top;
+
+
+        const centerX =
+            rect.width / 2;
+
+        const centerY =
+            rect.height / 2;
+
+
+        const rotateX =
+            (y - centerY) / 35;
+
+        const rotateY =
+            (centerX - x) / 35;
+
+
+        card.style.transform =
+            `perspective(900px)
+             translateY(-8px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)
+             rotate(1deg)`;
+    });
+
+
+    card.addEventListener("mouseleave", () => {
+
+        card.style.transform =
+            "";
+
+    });
+
+});
+
+
+
+/* =========================================================
+   PROFILE RESET
+========================================================= */
+
+profileBox.addEventListener("mouseleave", () => {
+
+    profileBox.style.transform =
+        "";
+
+});
+
+
+/* =========================================================
+   เพิ่มประกายเมื่อคลิก
+========================================================= */
+
+document.addEventListener("click", (e) => {
+
+    const sparkle =
+        document.createElement("span");
+
+
+    sparkle.innerHTML = "✦";
+
+
+    sparkle.style.position =
+        "fixed";
+
+    sparkle.style.left =
+        `${e.clientX}px`;
+
+    sparkle.style.top =
+        `${e.clientY}px`;
+
+    sparkle.style.color =
+        "white";
+
+    sparkle.style.fontSize =
+        `${Math.random() * 10 + 15}px`;
+
+    sparkle.style.pointerEvents =
+        "none";
+
+    sparkle.style.zIndex =
+        "2000";
+
+    sparkle.style.textShadow =
+        "0 0 10px white, 0 0 20px #bba8ff";
+
+    sparkle.style.transform =
+        "translate(-50%,-50%)";
+
+    sparkle.style.transition =
+        "all .8s ease";
+
+
+    document.body.appendChild(sparkle);
+
+
+    requestAnimationFrame(() => {
+
+        sparkle.style.opacity =
+            "0";
+
+        sparkle.style.transform =
+            `translate(
+                ${Math.random() * 60 - 30}px,
+                ${Math.random() * -70 - 20}px
+            )
+            scale(1.7)
+            rotate(180deg)`;
+
+    });
+
+
+    setTimeout(() => {
+
+        sparkle.remove();
+
+    },800);
+
+});
+
+</script>
 </body>
 </html>
