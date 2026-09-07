@@ -785,6 +785,17 @@ footer{
 </div>
 </div>
 
+<div class="card" onclick="openModal('https://i.postimg.cc/rw30XbTf/1752062468242.jpg')">
+<div class="card-img">
+<img src="https://i.postimg.cc/rw30XbTf/1752062468242.jpg" alt="สภานักเรียน 5">
+</div>
+<div class="card-info">
+<h3>ร่วมเดินขบวนทุกขบวน</h3>
+<p>ร่วมเดินทุกขบวน ไมาว่าจะเข้าพรรษา ออกพรรษา ต่อต้านยาเสพติด</p>
+<span class="view">คลิกเพื่อดูภาพ</span>
+</div>
+</div>
+
 <div class="card" onclick="openModal('https://i.postimg.cc/xd0ZjrYK/FB-IMG-1780588972070.jpg')">
 <div class="card-img">
 <img src="https://i.postimg.cc/xd0ZjrYK/FB-IMG-1780588972070.jpg" alt="สภานักเรียน 5">
@@ -946,8 +957,7 @@ document.addEventListener("keydown",e=>{
         closeModal();
     }
 });
-
-document.addEventListener("click",e=>{
+    document.addEventListener("click",e=>{
     for(let i=0;i<7;i++){
         const spark=document.createElement("div");
         spark.className="click-spark";
