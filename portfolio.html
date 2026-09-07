@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="th">
 <head>
 <meta charset="UTF-8">
@@ -8,21 +7,12 @@
 
 <style>
 
-/* =========================================================
-   RESET
-========================================================= */
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
     font-family:'Segoe UI',sans-serif;
 }
-
-
-/* =========================================================
-   BODY / ANIMATED BACKGROUND
-========================================================= */
 
 body{
     background:
@@ -48,9 +38,6 @@ body{
 
     cursor:default;
 }
-
-
-/* แสงอ่อนทั่วพื้นหลัง */
 
 body::before{
     content:'';
@@ -79,9 +66,6 @@ body::before{
     pointer-events:none;
     z-index:0;
 }
-
-
-/* แสงมุมขวาล่าง */
 
 body::after{
     content:'';
@@ -112,13 +96,9 @@ body::after{
     z-index:0;
 }
 
-
-/* =========================================================
-   STAR FIELD
-========================================================= */
-
 .stars{
     position:fixed;
+
     inset:0;
 
     width:100%;
@@ -129,9 +109,6 @@ body::after{
 
     z-index:1;
 }
-
-
-/* ดาวแต่ละดวง */
 
 .star{
     position:absolute;
@@ -155,9 +132,6 @@ body::after{
 
     opacity:.5;
 }
-
-
-/* ดาว 4 แฉก */
 
 .star.cross{
     width:0;
@@ -187,11 +161,6 @@ body::after{
         0 0 8px white,
         0 0 18px rgba(220,220,255,.8);
 }
-
-
-/* =========================================================
-   DECORATIVE GLOW ORBS
-========================================================= */
 
 .orb{
     position:fixed;
@@ -262,11 +231,6 @@ body::after{
     animation:orbMove3 9s ease-in-out infinite;
 }
 
-
-/* =========================================================
-   CONTAINER DECORATION
-========================================================= */
-
 .container::before,
 .container::after{
     position:fixed;
@@ -310,11 +274,6 @@ body::after{
     animation-delay:1.5s;
 }
 
-
-/* =========================================================
-   MAIN CONTAINER
-========================================================= */
-
 .container{
     width:90%;
     max-width:1200px;
@@ -327,11 +286,6 @@ body::after{
     z-index:2;
 }
 
-
-/* =========================================================
-   HERO
-========================================================= */
-
 .hero{
     display:grid;
 
@@ -341,11 +295,6 @@ body::after{
 
     align-items:center;
 }
-
-
-/* =========================================================
-   PROFILE
-========================================================= */
 
 .profile-box{
     position:relative;
@@ -357,9 +306,6 @@ body::after{
 
     transition:transform .2s ease-out;
 }
-
-
-/* วงแหวนแสงรอบรูป */
 
 .profile-box::before{
     content:'';
@@ -390,9 +336,6 @@ body::after{
     z-index:-1;
 }
 
-
-/* วงแหวนเส้นบาง */
-
 .profile-box::after{
     content:'';
 
@@ -415,7 +358,6 @@ body::after{
 
     z-index:-1;
 }
-
 
 .profile-img{
     width:320px;
@@ -450,11 +392,6 @@ body::after{
         0 0 90px rgba(190,170,255,.4);
 }
 
-
-/* =========================================================
-   GLASS BOX
-========================================================= */
-
 .glass{
     background:
         linear-gradient(
@@ -488,9 +425,6 @@ body::after{
 
     overflow:hidden;
 }
-
-
-/* แสงสะท้อนบน Glass */
 
 .glass::before{
     content:'';
@@ -532,11 +466,6 @@ body::after{
         0 0 30px rgba(200,190,255,.12);
 }
 
-
-/* =========================================================
-   INTRO TEXT
-========================================================= */
-
 .intro h1{
     font-size:3rem;
 
@@ -555,12 +484,6 @@ body::after{
     text-shadow:
         0 2px 8px rgba(0,0,0,.1);
 }
-
-
-/* =========================================================
-   ORIGINAL GRID — ไม่เปลี่ยน Layout
-========================================================= */
-
 .grid-area{
     margin-top:60px;
 
@@ -570,11 +493,6 @@ body::after{
 
     gap:20px;
 }
-
-
-/* =========================================================
-   CARDS
-========================================================= */
 
 .card{
     background:
@@ -603,9 +521,6 @@ body::after{
 
     transform-style:preserve-3d;
 }
-
-
-/* แสงวิ่งด้านบน */
 
 .card::before{
     content:'';
@@ -638,9 +553,6 @@ body::after{
     left:130%;
 }
 
-
-/* แสงด้านข้าง */
-
 .card::after{
     content:'';
 
@@ -670,9 +582,6 @@ body::after{
     transform:scale(2);
 }
 
-
-/* Hover เดิม + เพิ่ม Glow */
-
 .card:hover{
     transform:
         translateY(-8px)
@@ -683,7 +592,6 @@ body::after{
         0 0 25px rgba(130,120,255,.12),
         0 0 50px rgba(170,150,255,.08);
 }
-
 
 .card h2{
     color:#5367c9;
@@ -708,11 +616,6 @@ body::after{
     color:#444;
 }
 
-
-/* =========================================================
-   ORIGINAL CARD SPANS — ห้ามเปลี่ยน
-========================================================= */
-
 .card1{
     grid-column:span 2;
     min-height:250px;
@@ -729,11 +632,6 @@ body::after{
 .card4{
     grid-column:span 3;
 }
-
-
-/* =========================================================
-   PHOTO BOX
-========================================================= */
 
 .photo-box{
     width:100%;
@@ -765,9 +663,6 @@ body::after{
 
     overflow:hidden;
 }
-
-
-/* แสงในช่องรูป */
 
 .photo-box::before{
     content:'✦';
@@ -822,19 +717,11 @@ body::after{
         0 0 25px rgba(130,120,255,.1);
 }
 
-
-/* =========================================================
-   TIMELINE
-========================================================= */
-
 .timeline{
     position:relative;
 
     margin-top:60px;
 }
-
-
-/* เส้นกลาง */
 
 .timeline::before{
     content:'';
@@ -870,7 +757,6 @@ body::after{
         0 0 30px rgba(180,170,255,.18);
 }
 
-
 .event{
     width:45%;
 
@@ -900,9 +786,6 @@ body::after{
     overflow:hidden;
 }
 
-
-/* จุด Timeline */
-
 .event::before{
     content:'';
 
@@ -931,7 +814,6 @@ body::after{
     left:-33px;
 }
 
-
 .event:hover{
     transform:
         translateY(-5px)
@@ -959,12 +841,6 @@ body::after{
     text-shadow:
         0 2px 8px rgba(100,110,210,.12);
 }
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
 .footer{
     text-align:center;
 
@@ -982,12 +858,6 @@ body::after{
 
     animation:footerFloat 4s ease-in-out infinite;
 }
-
-
-/* =========================================================
-   MOUSE FOLLOW SYSTEM
-   ไม่เปลี่ยน Layout
-========================================================= */
 
 .mouse-glow{
     position:fixed;
@@ -1028,8 +898,329 @@ body:hover .mouse-glow{
     opacity:1;
 }
 
+.cursor-dot{
+    position:fixed;
 
-/* จุดเล็กตามเมาส์ */
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 8px white,
+        0 0 18px rgba(190,180,255,.9);
+
+    pointer-events:none;
+
+    z-index:1000;
+
+    transform:
+        translate(-50%,-50%);
+
+    opacity:0;
+
+    transition:opacity .3s ease;
+}
+
+body:hover .cursor-dot{
+    opacity:.9;
+}
+
+.event img{
+    width:100%;
+    height:260px;
+
+    object-fit:contain;
+
+    display:block;
+
+    border-radius:15px;
+
+    margin-top:15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(79,172,254,.05),
+            rgba(142,125,255,.08)
+        );
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.08);
+}
+
+.event p{
+    line-height:1.8;
+}
+
+.event .event-title{
+    color:#6575d2;
+
+    font-weight:600;
+
+    margin-top:12px;
+
+    line-height:1.6;
+}
+
+@keyframes gradientMove{
+    0%{
+        background-position:0% 50%;
+    }
+
+    25%{
+        background-position:50% 100%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    75%{
+        background-position:50% 0%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+}
+
+@keyframes floatLight{
+    0%,100%{
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    50%{
+        transform:
+            translate(100px,80px)
+            scale(1.15);
+    }
+}
+@keyframes floatLight2{
+    0%,100%{
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    50%{
+        transform:
+            translate(-90px,-70px)
+            scale(1.12);
+    }
+}
+
+@keyframes sparkle{
+    0%,100%{
+        opacity:.25;
+        transform:
+            scale(.8)
+            rotate(0deg);
+    }
+
+    50%{
+        opacity:1;
+        transform:
+            scale(1.35)
+            rotate(180deg);
+    }
+}
+
+@keyframes rotateStar{
+    from{
+        rotate:0deg;
+    }
+
+    to{
+        rotate:360deg;
+    }
+}
+
+@keyframes imageGlow{
+    0%,100%{
+        opacity:.45;
+        transform:scale(.95);
+    }
+
+    50%{
+        opacity:.85;
+        transform:scale(1.05);
+    }
+}
+
+@keyframes ringRotate{
+    from{
+        rotate:0deg;
+    }
+
+    to{
+        rotate:360deg;
+    }
+}
+
+@keyframes ringRotateReverse{
+    from{
+        rotate:360deg;
+    }
+
+    to{
+        rotate:0deg;
+    }
+}
+
+@keyframes glassShine{
+    0%{
+        left:-80%;
+    }
+
+    45%,100%{
+        left:150%;
+    }
+}
+
+@keyframes twinkle{
+    0%,100%{
+        opacity:.2;
+        transform:scale(.6);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.4);
+    }
+}
+
+@keyframes starFloat{
+    0%,100%{
+        margin-top:0;
+    }
+
+    50%{
+        margin-top:-12px;
+    }
+}
+
+@keyframes orbMove1{
+    0%,100%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(80px,40px) scale(1.2);
+    }
+}
+
+@keyframes orbMove2{
+    0%,100%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(-70px,-50px) scale(1.15);
+    }
+}
+
+@keyframes orbMove3{
+    0%,100%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(40px,-35px) scale(1.2);
+    }
+}
+
+@keyframes photoOrb{
+    0%,100%{
+        transform:translate(0,0);
+        opacity:.5;
+    }
+
+    50%{
+        transform:translate(30px,-15px) scale(1.3);
+        opacity:1;
+    }
+}
+
+@keyframes timelineGlow{
+    0%{
+        background-position:0% 0%;
+    }
+
+    100%{
+        background-position:0% 300%;
+    }
+}
+
+@keyframes footerFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-4px);
+    }
+}
+.footer{
+    text-align:center;
+
+    color:white;
+
+    margin-top:50px;
+
+    padding-bottom:30px;
+
+    text-shadow:
+        0 2px 10px rgba(0,0,0,.15),
+        0 0 15px rgba(255,255,255,.2);
+
+    letter-spacing:1px;
+
+    animation:footerFloat 4s ease-in-out infinite;
+}
+
+.mouse-glow{
+    position:fixed;
+
+    width:260px;
+    height:260px;
+
+    left:0;
+    top:0;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:999;
+
+    transform:
+        translate(-50%,-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.18) 0%,
+            rgba(220,215,255,.08) 30%,
+            transparent 70%
+        );
+
+    filter:blur(5px);
+
+    mix-blend-mode:screen;
+
+    opacity:0;
+
+    transition:opacity .3s ease;
+}
+
+body:hover .mouse-glow{
+    opacity:1;
+}
 
 .cursor-dot{
     position:fixed;
@@ -1061,13 +1252,164 @@ body:hover .cursor-dot{
     opacity:.9;
 }
 
+.event img{
+    width:100%;
+    height:260px;
 
-/* =========================================================
-   ANIMATIONS
-========================================================= */
+    object-fit:contain;
+
+    display:block;
+
+    border-radius:15px;
+
+    margin-top:15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(79,172,254,.05),
+            rgba(142,125,255,.08)
+        );
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.08);
+
+    cursor:pointer;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.event img:hover{
+    transform:scale(1.02);
+
+    box-shadow:
+        0 12px 28px rgba(80,70,180,.18),
+        0 0 25px rgba(170,155,255,.2);
+}
+
+.event p{
+    line-height:1.8;
+}
+
+.event .event-title{
+    color:#6575d2;
+
+    font-weight:600;
+
+    margin-top:12px;
+
+    line-height:1.6;
+}
+
+.image-modal{
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(20,20,50,.78);
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:30px;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
+
+    z-index:5000;
+}
+
+.image-modal.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.image-modal img{
+    max-width:92vw;
+    max-height:88vh;
+
+    width:auto;
+    height:auto;
+
+    object-fit:contain;
+
+    border-radius:20px;
+
+    border:5px solid white;
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.45),
+        0 0 45px rgba(210,200,255,.35);
+
+    transform:scale(.9);
+
+    transition:transform .3s ease;
+}
+
+.image-modal.active img{
+    transform:scale(1);
+}
+
+.close-modal{
+    position:absolute;
+
+    top:25px;
+    right:30px;
+
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.6);
+
+    background:
+        rgba(255,255,255,.18);
+
+    color:white;
+
+    font-size:28px;
+
+    line-height:44px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.2),
+        0 0 20px rgba(255,255,255,.15);
+
+    transition:
+        transform .25s ease,
+        background .25s ease;
+}
+
+.close-modal:hover{
+    transform:scale(1.1) rotate(90deg);
+
+    background:
+        rgba(255,255,255,.3);
+}
 
 @keyframes gradientMove{
-
     0%{
         background-position:0% 50%;
     }
@@ -1089,9 +1431,7 @@ body:hover .cursor-dot{
     }
 }
 
-
 @keyframes floatLight{
-
     0%,100%{
         transform:
             translate(0,0)
@@ -1105,9 +1445,7 @@ body:hover .cursor-dot{
     }
 }
 
-
 @keyframes floatLight2{
-
     0%,100%{
         transform:
             translate(0,0)
@@ -1121,9 +1459,7 @@ body:hover .cursor-dot{
     }
 }
 
-
 @keyframes sparkle{
-
     0%,100%{
         opacity:.25;
         transform:
@@ -1139,9 +1475,7 @@ body:hover .cursor-dot{
     }
 }
 
-
 @keyframes rotateStar{
-
     from{
         rotate:0deg;
     }
@@ -1151,9 +1485,7 @@ body:hover .cursor-dot{
     }
 }
 
-
 @keyframes imageGlow{
-
     0%,100%{
         opacity:.45;
         transform:scale(.95);
@@ -1165,9 +1497,7 @@ body:hover .cursor-dot{
     }
 }
 
-
 @keyframes ringRotate{
-
     from{
         rotate:0deg;
     }
@@ -1176,10 +1506,8 @@ body:hover .cursor-dot{
         rotate:360deg;
     }
 }
-
 
 @keyframes ringRotateReverse{
-
     from{
         rotate:360deg;
     }
@@ -1189,9 +1517,7 @@ body:hover .cursor-dot{
     }
 }
 
-
 @keyframes glassShine{
-
     0%{
         left:-80%;
     }
@@ -1201,9 +1527,7 @@ body:hover .cursor-dot{
     }
 }
 
-
 @keyframes twinkle{
-
     0%,100%{
         opacity:.2;
         transform:scale(.6);
@@ -1215,9 +1539,7 @@ body:hover .cursor-dot{
     }
 }
 
-
 @keyframes starFloat{
-
     0%,100%{
         margin-top:0;
     }
@@ -1227,9 +1549,7 @@ body:hover .cursor-dot{
     }
 }
 
-
 @keyframes orbMove1{
-
     0%,100%{
         transform:translate(0,0);
     }
@@ -1239,9 +1559,7 @@ body:hover .cursor-dot{
     }
 }
 
-
 @keyframes orbMove2{
-
     0%,100%{
         transform:translate(0,0);
     }
@@ -1251,9 +1569,7 @@ body:hover .cursor-dot{
     }
 }
 
-
 @keyframes orbMove3{
-
     0%,100%{
         transform:translate(0,0);
     }
@@ -1263,9 +1579,7 @@ body:hover .cursor-dot{
     }
 }
 
-
 @keyframes photoOrb{
-
     0%,100%{
         transform:translate(0,0);
         opacity:.5;
@@ -1277,9 +1591,7 @@ body:hover .cursor-dot{
     }
 }
 
-
 @keyframes timelineGlow{
-
     0%{
         background-position:0% 0%;
     }
@@ -1289,9 +1601,7 @@ body:hover .cursor-dot{
     }
 }
 
-
 @keyframes footerFloat{
-
     0%,100%{
         transform:translateY(0);
     }
@@ -1300,26 +1610,16 @@ body:hover .cursor-dot{
         transform:translateY(-4px);
     }
 }
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
 @media(max-width:900px){
-
     .hero{
         grid-template-columns:1fr;
-
         text-align:center;
     }
-
 
     .profile-img{
         width:250px;
         height:250px;
     }
-
 
     .profile-box::before{
         width:280px;
@@ -1331,11 +1631,9 @@ body:hover .cursor-dot{
         height:300px;
     }
 
-
     .grid-area{
         grid-template-columns:1fr;
     }
-
 
     .card1,
     .card2,
@@ -1344,27 +1642,24 @@ body:hover .cursor-dot{
         grid-column:span 1;
     }
 
-
     .timeline::before{
         display:none;
     }
-
 
     .event{
         width:100%;
     }
 
-
     .event::before{
         display:none;
     }
+
+    .event img{
+        height:240px;
+    }
 }
 
-
-/* มือถือไม่ต้องใช้ Mouse Glow */
-
 @media(max-width:600px){
-
     .mouse-glow,
     .cursor-dot{
         display:none;
@@ -1379,13 +1674,35 @@ body:hover .cursor-dot{
         font-size:2.3rem;
     }
 
+    .event img{
+        height:220px;
+    }
+
+    .image-modal{
+        padding:15px;
+    }
+
+    .image-modal img{
+        max-width:96vw;
+        max-height:85vh;
+
+        border-width:3px;
+    }
+
+    .close-modal{
+        top:15px;
+        right:15px;
+
+        width:44px;
+        height:44px;
+
+        font-size:25px;
+
+        line-height:40px;
+    }
 }
 
-
-/* ลด animation หากผู้ใช้เปิด Reduce Motion */
-
 @media(prefers-reduced-motion:reduce){
-
     *,
     *::before,
     *::after{
@@ -1393,20 +1710,13 @@ body:hover .cursor-dot{
         animation-iteration-count:1 !important;
         transition-duration:.01ms !important;
     }
-
 }
 
 </style>
 
 </head>
 
-
 <body>
-
-
-<!-- =========================================================
-     DECORATIVE BACKGROUND
-========================================================= -->
 
 <div class="stars" id="stars"></div>
 
@@ -1417,20 +1727,11 @@ body:hover .cursor-dot{
 <div class="mouse-glow" id="mouseGlow"></div>
 <div class="cursor-dot" id="cursorDot"></div>
 
-
 <div class="container">
-
-
-<!-- =========================================================
-     ส่วนบน
-========================================================= -->
 
 <section class="hero">
 
-
     <div class="profile-box" id="profileBox">
-
-        <!-- ใส่รูปตัวเอง -->
 
         <img
             src="https://i.postimg.cc/Nj4KpjRX/41425.jpg"
@@ -1440,13 +1741,12 @@ body:hover .cursor-dot{
 
     </div>
 
-
     <div class="glass intro">
 
         <h1>ปฐภรณ์</h1>
 
         <p>
-            นักเรียนผู้มีความสนใจและหลงใหลในโลกแห่งศิลปะ
+            มีความสนใจและหลงใหลในโลกแห่งศิลปะ
             การออกแบบ และการสร้างสรรค์ผลงานที่สะท้อนความเป็นตัวเอง
             มีความตั้งใจในการพัฒนาทักษะด้านศิลปะอย่างต่อเนื่อง
             พร้อมเปิดรับประสบการณ์และเรียนรู้สิ่งใหม่ ๆ อยู่เสมอ
@@ -1456,17 +1756,9 @@ body:hover .cursor-dot{
 
     </div>
 
-
 </section>
 
-
-
-<!-- =========================================================
-     Layout เดิม — ไม่เปลี่ยน
-========================================================= -->
-
 <section class="grid-area">
-
 
     <div class="card card1">
 
@@ -1494,8 +1786,6 @@ body:hover .cursor-dot{
 
     </div>
 
-
-
     <div class="card card2">
 
         <h2>🌟 ความสามารถพิเศษ</h2>
@@ -1516,19 +1806,16 @@ body:hover .cursor-dot{
 
     </div>
 
-
-
     <div class="card card3">
 
-        <h2>🎨 ผลงานเด่น</h2>
+        <h2>🎨 ผลงานที่ภูมิใจ</h2>
 
         <div class="photo-box">
-            ใส่รูปผลงานที่นี่
+             <img
+            src="https://i.postimg.cc/26wr8p1X/orca-image-2063504881-jpeg.jpg"
         </div>
 
     </div>
-
-
 
     <div class="card card4">
 
@@ -1537,110 +1824,122 @@ body:hover .cursor-dot{
         <ul>
 
             <li>
-                เข้าร่วมการแข่งขันวาดภาพและกิจกรรมด้านศิลปะภายในโรงเรียน
+                ชนะเหรีญทองศิลปหัตถกรรมสภานักเรียน
             </li>
 
             <li>
-                ร่วมกิจกรรมสัปดาห์วิทยาศาสตร์และสร้างสรรค์ผลงานที่เกี่ยวข้อง
+                มีส่วนอย่างมากในการชนะ เพราะเป็นคนซ้อมบท ทำรายงาน ให้เพื่อนร่วมทีม
             </li>
 
             <li>
-                เข้าร่วมนิทรรศการและนำเสนอผลงานศิลปะของนักเรียน
+                มีส่วนในการทำอุปกรณ์ และคิดท่าทางประกอบการแข่งอย่างมาก
             </li>
 
         </ul>
 
     </div>
 
-
 </section>
-
-
-
-<!-- =========================================================
-     TIMELINE เดิม
-========================================================= -->
 
 <section class="timeline">
+       <div class="event left">
 
+        <h3>2024 รอบที่1</h3>
 
-    <div class="event left">
+        <img
+            src="https://i.postimg.cc/3Rr3F4Xh/IMG-5380.jpg"
+            alt="ผลงานปี 2024"
+        >
 
-        <h3>2023</h3>
-
-        <p>
-            เริ่มเข้าร่วมกิจกรรมด้านศิลปะ
-            และค้นพบความสนใจในการวาดภาพ
+        <p class="event-title">
+            ชนะเลิศภายในโรงเรียน ในงานวิทยาศาสตร์
         </p>
 
     </div>
-
-
 
     <div class="event right">
 
-        <h3>2024</h3>
+        <h3>2025 รอบที่2</h3>
 
-        <p>
-            เริ่มสร้างสรรค์ผลงานวาดภาพชุดแรก
-            และทดลองใช้เทคนิคสีที่หลากหลาย
+        <img
+            src="https://i.postimg.cc/3xM7bbXN/IMG-5381.jpg"
+            alt="ผลงานปี 2025"
+        >
+
+        <p class="event-title">
+            ชนะเลิศภายในโรงเรียน ในงานวิทยาศาสตร์
         </p>
 
     </div>
-
-
 
     <div class="event left">
 
-        <h3>2025</h3>
+        <h3>2026 รอบที่3</h3>
 
-        <p>
-            เข้าร่วมกิจกรรมและการประกวดวาดภาพ
-            พร้อมพัฒนาทักษะด้านศิลปะอย่างต่อเนื่อง
+        <img
+            src="https://i.postimg.cc/G2SnPM3L/IMG-5383.png"
+            alt="ผลงานปี 2026"
+        >
+
+        <p class="event-title">
+            ชนะเลิศภายในโรงเรียน ในงานวิทยาศาสตร์
         </p>
 
     </div>
-
-
-
-    <div class="event right">
-
-        <h3>2026</h3>
-
-        <p>
-            พัฒนาแฟ้มสะสมผลงานออนไลน์
-            เพื่อรวบรวมและนำเสนอผลงานด้านศิลปะและการออกแบบ
-        </p>
-
-    </div>
-
 
 </section>
 
+</style>
+<div class="next-page">
+    <div class="next-frame">
 
+        <div class="frame-star star-left">✦</div>
+        <div class="frame-star star-right">✦</div>
+
+        <div class="frame-line"></div>
+
+        <a href="work.html">
+            <span class="next-icon">✧</span>
+            <span>หน้าต่อไป</span>
+            <span class="arrow">→</span>
+        </a>
+
+        <div class="frame-line"></div>
+
+    </div>
+</div>
 
 <div class="footer">
     ✨ Portfolio by Pathaporn ✨
 </div>
 
+</div>
+
+<div class="image-modal" id="imageModal">
+
+    <button
+        class="close-modal"
+        id="closeModal"
+        aria-label="ปิดรูป"
+    >
+        ×
+    </button>
+
+    <img
+        id="modalImage"
+        src=""
+        alt="รูปผลงาน"
+    >
 
 </div>
 
-
-
 <script>
-
-/* =========================================================
-   RANDOM STAR GENERATOR
-========================================================= */
 
 const starsContainer =
     document.getElementById("stars");
 
-
 const starCount =
     window.innerWidth < 600 ? 45 : 85;
-
 
 for(let i = 0; i < starCount; i++){
 
@@ -1648,9 +1947,6 @@ for(let i = 0; i < starCount; i++){
         document.createElement("span");
 
     star.classList.add("star");
-
-
-    /* สลับดาวธรรมดา / ดาว 4 แฉก */
 
     if(Math.random() > .78){
 
@@ -1663,41 +1959,29 @@ for(let i = 0; i < starCount; i++){
 
     }
 
-
     star.style.left =
         `${Math.random() * 100}%`;
 
     star.style.top =
         `${Math.random() * 100}%`;
 
-
     star.style.setProperty(
         "--duration",
         `${Math.random() * 3 + 2}s`
     );
-
 
     star.style.setProperty(
         "--float",
         `${Math.random() * 5 + 4}s`
     );
 
-
     star.style.setProperty(
         "--delay",
         `${Math.random() * 5}s`
     );
 
-
     starsContainer.appendChild(star);
 }
-
-
-
-/* =========================================================
-   MOUSE FOLLOW EFFECT
-   ไม่แก้ Layout
-========================================================= */
 
 const mouseGlow =
     document.getElementById("mouseGlow");
@@ -1708,13 +1992,11 @@ const cursorDot =
 const profileBox =
     document.getElementById("profileBox");
 
-
 let mouseX = window.innerWidth / 2;
 let mouseY = window.innerHeight / 2;
 
 let currentX = mouseX;
 let currentY = mouseY;
-
 
 document.addEventListener("mousemove", (e) => {
 
@@ -1722,9 +2004,6 @@ document.addEventListener("mousemove", (e) => {
     mouseY = e.clientY;
 
 });
-
-
-/* ทำให้แสงตามเม้าส์นุ่ม ไม่กระตุก */
 
 function animateMouse(){
 
@@ -1734,26 +2013,17 @@ function animateMouse(){
     currentY +=
         (mouseY - currentY) * 0.12;
 
-
     mouseGlow.style.left =
         `${currentX}px`;
 
     mouseGlow.style.top =
         `${currentY}px`;
 
-
     cursorDot.style.left =
         `${mouseX}px`;
 
     cursorDot.style.top =
         `${mouseY}px`;
-
-
-    /*
-       รูปด้านบนจะเอียงเล็กน้อย
-       ตามตำแหน่งเม้าส์
-       ไม่กระทบ Grid Layout
-    */
 
     if(window.innerWidth > 900){
 
@@ -1763,13 +2033,11 @@ function animateMouse(){
         const centerY =
             window.innerHeight / 2;
 
-
         const rotateY =
             (mouseX - centerX) / 80;
 
         const rotateX =
             (centerY - mouseY) / 80;
-
 
         profileBox.style.transform =
             `perspective(900px)
@@ -1777,23 +2045,14 @@ function animateMouse(){
              rotateY(${rotateY}deg)`;
     }
 
-
     requestAnimationFrame(animateMouse);
 
 }
 
 animateMouse();
 
-
-
-/* =========================================================
-   CARD MOUSE TILT
-   ขยับตามเม้าส์แบบเบามาก
-========================================================= */
-
 const cards =
     document.querySelectorAll(".card");
-
 
 cards.forEach(card => {
 
@@ -1802,10 +2061,8 @@ cards.forEach(card => {
         if(window.innerWidth <= 900)
             return;
 
-
         const rect =
             card.getBoundingClientRect();
-
 
         const x =
             e.clientX - rect.left;
@@ -1813,20 +2070,17 @@ cards.forEach(card => {
         const y =
             e.clientY - rect.top;
 
-
         const centerX =
             rect.width / 2;
 
         const centerY =
             rect.height / 2;
 
-
         const rotateX =
             (y - centerY) / 35;
 
         const rotateY =
             (centerX - x) / 35;
-
 
         card.style.transform =
             `perspective(900px)
@@ -1835,7 +2089,6 @@ cards.forEach(card => {
              rotateY(${rotateY}deg)
              rotate(1deg)`;
     });
-
 
     card.addEventListener("mouseleave", () => {
 
@@ -1846,12 +2099,6 @@ cards.forEach(card => {
 
 });
 
-
-
-/* =========================================================
-   PROFILE RESET
-========================================================= */
-
 profileBox.addEventListener("mouseleave", () => {
 
     profileBox.style.transform =
@@ -1859,19 +2106,83 @@ profileBox.addEventListener("mouseleave", () => {
 
 });
 
+const imageModal =
+    document.getElementById("imageModal");
 
-/* =========================================================
-   เพิ่มประกายเมื่อคลิก
-========================================================= */
+const modalImage =
+    document.getElementById("modalImage");
+
+const closeModal =
+    document.getElementById("closeModal");
+
+const eventImages =
+    document.querySelectorAll(".event img");
+
+eventImages.forEach(image => {
+
+    image.addEventListener("click", () => {
+
+        modalImage.src =
+            image.src;
+
+        modalImage.alt =
+            image.alt;
+
+        imageModal.classList.add("active");
+
+        document.body.style.overflow =
+            "hidden";
+
+    });
+
+});
+
+function closeImageModal(){
+
+    imageModal.classList.remove("active");
+
+    document.body.style.overflow =
+        "";
+
+    setTimeout(() => {
+
+        modalImage.src = "";
+
+    },300);
+
+}
+
+closeModal.addEventListener(
+    "click",
+    closeImageModal
+);
+
+imageModal.addEventListener("click", (e) => {
+
+    if(e.target === imageModal){
+
+        closeImageModal();
+
+    }
+
+});
+
+document.addEventListener("keydown", (e) => {
+
+    if(e.key === "Escape"){
+
+        closeImageModal();
+
+    }
+
+});
 
 document.addEventListener("click", (e) => {
 
     const sparkle =
         document.createElement("span");
 
-
     sparkle.innerHTML = "✦";
-
 
     sparkle.style.position =
         "fixed";
@@ -1892,7 +2203,7 @@ document.addEventListener("click", (e) => {
         "none";
 
     sparkle.style.zIndex =
-        "2000";
+        "6000";
 
     sparkle.style.textShadow =
         "0 0 10px white, 0 0 20px #bba8ff";
@@ -1903,9 +2214,7 @@ document.addEventListener("click", (e) => {
     sparkle.style.transition =
         "all .8s ease";
 
-
     document.body.appendChild(sparkle);
-
 
     requestAnimationFrame(() => {
 
@@ -1921,7 +2230,6 @@ document.addEventListener("click", (e) => {
             rotate(180deg)`;
 
     });
-
 
     setTimeout(() => {
 
