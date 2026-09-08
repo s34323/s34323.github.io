@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>คณะที่อยากเข้าศึกษา | จุฬาลงกรณ์มหาวิทยาลัย</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    position:relative;
+    font-family:"Segoe UI",Tahoma,sans-serif;
+    color:#fff;
+    background:
+        linear-gradient(
+            120deg,
+            #72c9ff,
+            #91bfff,
+            #a99cff,
+            #c3a8ff,
+            #8bbcff,
+            #bba4ff,
+            #75caff
+        );
+    background-size:500% 500%;
+    animation:gradientMove 16s ease infinite;
+    background-attachment:fixed;
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+/* ดาว */
+.stars,
+.cross-stars,
+.shooting-stars{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+}
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:#fff;
+    border-radius:50%;
+    opacity:.8;
+    animation:twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle{
+    0%,100%{opacity:.25;transform:scale(.7)}
+    50%{opacity:1;transform:scale(1.5)}
+}
+
+.cross-star{
+    position:absolute;
+    width:18px;
+    height:18px;
+    opacity:.55;
+    animation:crossTwinkle 4s ease-in-out infinite;
+}
+
+.cross-star::before,
+.cross-star::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    background:rgba(255,255,255,.9);
+    border-radius:10px;
+}
+
+.cross-star::before{
+    width:2px;
+    height:18px;
+}
+
+.cross-star::after{
+    width:18px;
+    height:2px;
+}
+
+@keyframes crossTwinkle{
+    0%,100%{opacity:.2;transform:scale(.7) rotate(0deg)}
+    50%{opacity:.9;transform:scale(1.2) rotate(45deg)}
+}
+
+.shooting{
+    position:absolute;
+    width:100px;
+    height:2px;
+    background:linear-gradient(90deg,transparent,#fff);
+    transform:rotate(-35deg);
+    opacity:0;
+    animation:shoot 6s linear infinite;
+}
+
+@keyframes shoot{
+    0%{
+        transform:translate(0,0) rotate(-35deg);
+        opacity:0;
+    }
+    8%{opacity:.9}
+    18%{
+        transform:translate(-250px,180px) rotate(-35deg);
+        opacity:0;
+    }
+    100%{opacity:0}
+}
+
+.orb{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(70px);
+    pointer-events:none;
+    z-index:0;
+    opacity:.3;
+}
+
+.orb1{
+    width:280px;
+    height:280px;
+    background:#fff;
+    top:-80px;
+    left:-80px;
+}
+
+.orb2{
+    width:320px;
+    height:320px;
+    background:#b58cff;
+    right:-100px;
+    top:35%;
+}
+
+.orb3{
+    width:250px;
+    height:250px;
+    background:#72c9ff;
+    left:20%;
+    bottom:-100px;
+}
+
+.container{
+    position:relative;
+    z-index:2;
+    width:min(1050px,92%);
+    margin:auto;
+    padding:55px 0 80px;
+}
+
+.hero{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.hero h1{
+    font-size:clamp(30px,5vw,54px);
+    font-weight:800;
+    text-shadow:0 4px 20px rgba(45,55,130,.25);
+}
+
+.hero p{
+    margin-top:12px;
+    font-size:16px;
+    opacity:.95;
+}
+
+.section{
+    margin-top:35px;
+}
+
+.section-title{
+    text-align:center;
+    font-size:28px;
+    margin-bottom:25px;
+    text-shadow:0 3px 15px rgba(60,60,130,.2);
+}
+
+.card{
+    position:relative;
+    overflow:hidden;
+    padding:30px;
+    border-radius:28px;
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.4);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    box-shadow:0 15px 40px rgba(55,70,150,.15);
+    transition:.35s ease;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    background:rgba(255,255,255,.23);
+    box-shadow:0 20px 45px rgba(55,70,150,.22);
+}
+
+.intro-card{
+    text-align:center;
+    line-height:1.9;
+}
+
+.intro-card h2{
+    font-size:27px;
+    margin-bottom:14px;
+}
+
+.intro-card p{
+    font-size:16px;
+}
+
+/* ข้อมูลคณะ */
+.faculty-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+}
+
+.info-card h3{
+    font-size:22px;
+    margin-bottom:12px;
+}
+
+.info-card p{
+    line-height:1.8;
+    opacity:.96;
+}
+
+.highlight{
+    color:#fff36b;
+    font-weight:700;
+    text-shadow:0 0 12px rgba(255,243,107,.25);
+}
+
+/* รอบ */
+.rounds{
+    display:grid;
+    gap:22px;
+}
+
+.round-card{
+    display:grid;
+    grid-template-columns:90px 1fr;
+    gap:22px;
+    align-items:start;
+}
+
+.round-number{
+    width:75px;
+    height:75px;
+    border-radius:22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    font-weight:800;
+    background:rgba(255,255,255,.22);
+    border:1px solid rgba(255,255,255,.45);
+    box-shadow:0 8px 25px rgba(70,80,150,.12);
+}
+
+.round-content h3{
+    font-size:22px;
+    margin-bottom:8px;
+}
+
+.round-content p{
+    line-height:1.8;
+}
+
+.note{
+    margin-top:18px;
+    padding:16px 18px;
+    border-radius:18px;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.3);
+    font-size:14px;
+    line-height:1.7;
+}
+
+/* เหตุผล */
+.reason-list{
+    display:grid;
+    gap:15px;
+}
+
+.reason{
+    padding:18px 20px;
+    border-radius:20px;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.28);
+    line-height:1.8;
+}
+
+.reason strong{
+    color:#fff36b;
+}
+
+/* ปุ่ม */
+.back-wrap{
+    display:flex;
+    justify-content:center;
+    margin-top:45px;
+}
+
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 24px;
+    border-radius:30px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.45);
+    backdrop-filter:blur(15px);
+    box-shadow:0 8px 25px rgba(67,83,180,.15);
+    transition:.3s;
+}
+
+.back-btn:hover{
+    transform:translateY(-4px);
+    background:rgba(255,255,255,.32);
+}
+
+/* เอฟเฟกต์เมาส์ */
+.mouse-glow{
+    position:fixed;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:1;
+    background:radial-gradient(
+        circle,
+        rgba(255,255,255,.18),
+        transparent 70%
+    );
+    transform:translate(-50%,-50%);
+}
+
+.click-spark{
+    position:fixed;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#fff;
+    pointer-events:none;
+    z-index:99;
+    animation:spark .6s ease-out forwards;
+}
+
+@keyframes spark{
+    from{
+        transform:scale(1);
+        opacity:1;
+    }
+    to{
+        transform:scale(5);
+        opacity:0;
+    }
+}
+
+@media(max-width:700px){
+    .container{
+        width:90%;
+        padding-top:35px;
+    }
+
+    .faculty-grid{
+        grid-template-columns:1fr;
+    }
+
+    .round-card{
+        grid-template-columns:1fr;
+    }
+
+    .round-number{
+        width:65px;
+        height:65px;
+    }
+
+    .card{
+        padding:23px;
+    }
+
+    .section-title{
+        font-size:24px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+<div class="cross-stars" id="crossStars"></div>
+<div class="shooting-stars">
+    <div class="shooting" style="top:15%;left:85%;animation-delay:1s"></div>
+    <div class="shooting" style="top:45%;left:75%;animation-delay:4s"></div>
+</div>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<div class="mouse-glow" id="mouseGlow"></div>
+
+<div class="container">
+
+    <header class="hero">
+        <h1>จุฬาลงกรณ์มหาวิทยาลัย</h1>
+        <p>มหาวิทยาลัยและคณะที่ฉันใฝ่ฝันอยากเข้าศึกษาต่อ</p>
+    </header>
+
+    <section class="section">
+        <div class="card intro-card">
+            <h2>คณะศิลปกรรมศาสตร์</h2>
+
+            <p>
+                จุฬาลงกรณ์มหาวิทยาลัยเป็นหนึ่งในมหาวิทยาลัยที่ฉันใฝ่ฝัน
+                และเป็นสถานที่ที่ฉันอยากเข้าศึกษาต่อในระดับมหาวิทยาลัย
+                โดยเฉพาะในสายศิลปะและการออกแบบ
+            </p>
+
+            <p style="margin-top:12px;">
+                ฉันสนใจคณะศิลปกรรมศาสตร์ เพราะเป็นคณะที่เปิดโอกาสให้ได้
+                พัฒนาความสามารถทางศิลปะ ควบคู่ไปกับการเรียนรู้และสร้างสรรค์
+                ผลงานในแบบของตัวเอง
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">ทำไมถึงอยากเข้าจุฬาฯ</h2>
+
+        <div class="faculty-grid">
+
+            <div class="card info-card">
+                <h3>ชื่อเสียงและโอกาส</h3>
+                <p>
+                    จุฬาลงกรณ์มหาวิทยาลัยเป็นมหาวิทยาลัยที่มีชื่อเสียง
+                    และมีสภาพแวดล้อมทางการศึกษาที่หลากหลาย
+                    ฉันจึงมองว่าการได้เรียนที่นี่จะเป็นอีกก้าวสำคัญ
+                    ที่ช่วยเปิดโอกาสให้ฉันได้พัฒนาตัวเอง
+                </p>
+            </div>
+
+            <div class="card info-card">
+                <h3>เส้นทางด้านศิลปะ</h3>
+                <p>
+                    ฉันต้องการนำความชอบด้านศิลปะและการออกแบบ
+                    มาต่อยอดให้เป็นความสามารถที่จริงจังมากขึ้น
+                    และเชื่อว่าการเรียนในสภาพแวดล้อมที่เหมาะสม
+                    จะช่วยให้ฉันเติบโตและค้นพบแนวทางของตัวเองได้ดีขึ้น
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">รอบที่สนใจ</h2>
+
+        <div class="rounds">
+
+            <div class="card round-card">
+                <div class="round-number">01</div>
+
+                <div class="round-content">
+                    <h3>รอบที่ 1 · Portfolio</h3>
+
+                    <p>
+                        เป็นรอบที่ฉันสนใจเป็นพิเศษ เพราะสามารถนำ
+                        <span class="highlight">แฟ้มสะสมผลงาน</span>
+                        มานำเสนอความสามารถและประสบการณ์ด้านศิลปะ
+                        ของตัวเองได้
+                    </p>
+
+                    <p style="margin-top:10px;">
+                        การคัดเลือกของแต่ละสาขาอาจมีรายละเอียดแตกต่างกัน
+                        เช่น การพิจารณา Portfolio คุณสมบัติหรือ GPAX
+                        รวมถึงการสอบปฏิบัติหรือการสร้างผลงานตามโจทย์
+                        ที่คณะกำหนด
+                    </p>
+
+                    <div class="note">
+                        ตัวอย่างผลงานที่เหมาะกับสายนี้ เช่น
+                        ผลงานทัศนศิลป์ งานวาด งานออกแบบ
+                        หรือผลงานสร้างสรรค์ที่แสดงให้เห็นถึงแนวคิด
+                        และทักษะของผู้สมัคร
+                    </div>
+                </div>
+            </div>
+
+            <div class="card round-card">
+                <div class="round-number">03</div>
+
+                <div class="round-content">
+                    <h3>รอบที่ 3 · Admission</h3>
+
+                    <p>
+                        เป็นอีกหนึ่งรอบที่ฉันสนใจและสามารถใช้เป็น
+                        ทางเลือกในการเข้าศึกษาต่อ โดยการคัดเลือก
+                        จะพิจารณาจากคะแนนสอบตามเกณฑ์ของสาขา
+                        และปีการศึกษานั้น ๆ
+                    </p>
+
+                    <div class="note">
+                        รายละเอียดวิชา คะแนน และสัดส่วนการคัดเลือก
+                        ควรตรวจสอบจากประกาศของจุฬาลงกรณ์มหาวิทยาลัย
+                        ในปีที่สมัคร เนื่องจากเกณฑ์อาจแตกต่างกัน
+                        ตามสาขาวิชาและปีการศึกษา
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">เป้าหมายของฉัน</h2>
+
+        <div class="card">
+            <div class="reason-list">
+
+                <div class="reason">
+                    <strong>01 · พัฒนาความสามารถ</strong><br>
+                    ต้องการพัฒนาทักษะด้านศิลปะและการออกแบบ
+                    ให้มีความเป็นมืออาชีพมากยิ่งขึ้น
+                </div>
+
+                <div class="reason">
+                    <strong>02 · ค้นหาตัวตน</strong><br>
+                    อยากเรียนรู้เทคนิคและแนวคิดใหม่ ๆ
+                    เพื่อนำมาพัฒนาผลงานที่สะท้อนความเป็นตัวเอง
+                </div>
+
+                <div class="reason">
+                    <strong>03 · ต่อยอดความฝัน</strong><br>
+                    ฉันอยากให้ศิลปะไม่ใช่เพียงสิ่งที่ชอบทำในเวลาว่าง
+                    แต่สามารถกลายเป็นเส้นทางการเรียนและอาชีพ
+                    ที่ฉันตั้งใจเดินต่อไปในอนาคต
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="back-wrap">
+        <a href="index.html" class="back-btn">
+            ← กลับสู่หน้าเดิม
+        </a>
+    </div>
+
+</div>
+
+<script>
+/* สร้างดาว */
+const stars = document.getElementById("stars");
+
+for(let i = 0; i < 90; i++){
+    const star = document.createElement("div");
+    star.className = "star";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.animationDelay = Math.random() * 4 + "s";
+    star.style.animationDuration = (2 + Math.random() * 4) + "s";
+
+    stars.appendChild(star);
+}
+
+/* สร้างดาวกากบาท */
+const crossStars = document.getElementById("crossStars");
+
+for(let i = 0; i < 15; i++){
+    const star = document.createElement("div");
+    star.className = "cross-star";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.animationDelay = Math.random() * 4 + "s";
+
+    crossStars.appendChild(star);
+}
+
+/* แสงตามเมาส์ */
+const mouseGlow = document.getElementById("mouseGlow");
+
+document.addEventListener("mousemove", e => {
+    mouseGlow.style.left = e.clientX + "px";
+    mouseGlow.style.top = e.clientY + "px";
+});
+
+/* เอฟเฟกต์ตอนคลิก */
+document.addEventListener("click", e => {
+
+    const spark = document.createElement("div");
+    spark.className = "click-spark";
+
+    spark.style.left = e.clientX - 4 + "px";
+    spark.style.top = e.clientY - 4 + "px";
+
+    document.body.appendChild(spark);
+
+    setTimeout(() => {
+        spark.remove();
+    }, 600);
+});
+</script>
+
+</body>
+</html>
