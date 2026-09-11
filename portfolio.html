@@ -2235,4 +2235,272 @@ document.addEventListener("click", (e) => {
 
 </script>
 </body>
+    <!-- =========================
+     STAR MENU
+========================= -->
+
+<button class="star-menu-btn" id="starMenuBtn" onclick="toggleMenu()">
+    <span>✦</span>
+</button>
+
+<nav class="star-navbar" id="starNavbar">
+
+    <div class="star-logo">
+        <span>✦</span>
+        PORTFOLIO
+    </div>
+
+    <div class="star-links">
+
+        <a href="index.html">
+            <span>✧</span>
+            ประวัติส่วนตัว
+        </a>
+
+        <a href="introduction.html">
+            <span>✧</span>
+            คำนำ
+        </a>
+
+        <a href="work.html">
+            <span>✧</span>
+            ผลงาน
+        </a>
+
+        <a href="chula.html">
+            <span>✧</span>
+            มหาวิทยาลัย
+        </a>
+
+        <a href="contact.html">
+            <span>✧</span>
+            ช่องทางการติดต่อ
+        </a>
+
+    </div>
+
+</nav>
+
+
+<style>
+
+.star-menu-btn{
+    position: fixed;
+    top: 22px;
+    right: 25px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.45);
+    background: radial-gradient(
+        circle,
+        rgba(180,150,255,0.35),
+        rgba(60,40,120,0.55)
+    );
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+    z-index: 1000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 0 15px rgba(150,120,255,0.35),
+        inset 0 0 15px rgba(255,255,255,0.08);
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        background 0.4s ease;
+}
+
+.star-menu-btn span{
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.star-menu-btn:hover{
+    transform: scale(1.08);
+    box-shadow:
+        0 0 30px rgba(160,130,255,0.65),
+        inset 0 0 20px rgba(255,255,255,0.12);
+}
+
+.star-menu-btn:hover span{
+    transform: rotate(90deg) scale(1.15);
+}
+
+.star-menu-btn.active{
+    background: radial-gradient(
+        circle,
+        rgba(190,160,255,0.5),
+        rgba(65,40,130,0.7)
+    );
+    box-shadow:
+        0 0 35px rgba(170,140,255,0.7);
+}
+
+.star-menu-btn.active span{
+    transform: rotate(135deg);
+}
+
+.star-navbar{
+    position: fixed;
+    top: 22px;
+    left: 50%;
+    transform:
+        translate(-50%, -20px)
+        scale(0.95);
+    width: calc(100% - 170px);
+    max-width: 1100px;
+    min-height: 65px;
+    padding: 10px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    background: linear-gradient(
+        135deg,
+        rgba(30,25,65,0.75),
+        rgba(80,60,130,0.55)
+    );
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 24px;
+    box-shadow:
+        0 15px 45px rgba(40,25,100,0.3),
+        inset 0 0 25px rgba(255,255,255,0.05);
+    z-index: 999999;
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease,
+        visibility 0.4s ease;
+}
+
+.star-navbar.show{
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform:
+        translate(-50%, 0)
+        scale(1);
+}
+
+.star-logo{
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.star-logo span{
+    color: #cbb8ff;
+    font-size: 22px;
+    text-shadow:
+        0 0 12px rgba(190,160,255,0.9);
+}
+
+.star-links{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.star-links a{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.star-links a span{
+    color: #cdbdff;
+    transition: transform 0.3s ease;
+}
+
+.star-links a:hover{
+    background: rgba(255,255,255,0.13);
+    transform: translateY(-2px);
+}
+
+.star-links a:hover span{
+    transform: rotate(45deg) scale(1.2);
+}
+
+@media(max-width: 850px){
+
+    .star-menu-btn{
+        top: 15px;
+        right: 15px;
+        width: 52px;
+        height: 52px;
+        font-size: 24px;
+    }
+
+    .star-navbar{
+        top: 15px;
+        left: 15px;
+        transform:
+            translateY(-15px)
+            scale(0.95);
+        width: calc(100% - 85px);
+        padding: 14px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .star-navbar.show{
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+    .star-logo{
+        justify-content: center;
+        font-size: 16px;
+    }
+
+    .star-links{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .star-links a{
+        justify-content: center;
+        width: 100%;
+        padding: 9px;
+    }
+}
+
+</style>
+
+
+<script>
+
+function toggleMenu(){
+
+    const navbar = document.getElementById("starNavbar");
+    const button = document.getElementById("starMenuBtn");
+
+    navbar.classList.toggle("show");
+    button.classList.toggle("active");
+
+}
+
+</script>
 </html>
